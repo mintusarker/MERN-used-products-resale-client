@@ -39,7 +39,7 @@ const SignUp = () => {
 
     return (
         <div className='h-[600px] flex justify-center items-center'>
-            <div className='w-96 p-7'>
+            <div className='w-96 p-7 shadow-2xl'>
                 <h2 className='text-xl text-center'>Sign Up</h2>
 
                 <form onSubmit={handleSubmit(handleSignUp)}>
@@ -76,7 +76,7 @@ const SignUp = () => {
                             minLength: { value: 6, message: "Password at least 6 characters or longer" },
                         })} /> */}
                         <select type="option" className="select select-bordered w-full max-w-xs" {...register("option")}>
-                            <option disabled selected>Buyers Account</option>
+                            <option selected>Buyers Account</option>
                             <option>Seller Account</option>
                         </select>
                         {/* {errors.password && <p className='text-red-600'>{errors.password.message}</p>} */}
