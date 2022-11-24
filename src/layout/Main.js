@@ -1,9 +1,15 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Footer from '../Pages/SharePage/Footer/Footer';
+import Navbar from '../Pages/SharePage/Nabver/Navbar';
+
 
 const Main = () => {
     return (
         <div>
-            <h2>main</h2>
+            <Navbar></Navbar>
+            <Outlet></Outlet>
+            <Footer></Footer>
         </div>
     );
 };
