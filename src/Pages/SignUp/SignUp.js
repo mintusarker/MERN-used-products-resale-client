@@ -13,7 +13,28 @@ const SignUp = () => {
 
     const handleSignUp = data => {
         console.log(data)
-        
+        setSignUpError('');
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('User created successfully')
+                const userInfo = {
+                    displayName: data.name,
+                    option: data.option
+                }
+                updateUser(userInfo)
+                    .then((result) => {
+                        console.log(result)
+                    })
+                    .catch(err => console.log(err));
+                    navigate('/');
+            })
+            .catch(error => {
+                console.error(error)
+                setSignUpError(error.message)
+            })
+
     }
 
     return (
@@ -54,7 +75,7 @@ const SignUp = () => {
                             required: "Password is required",
                             minLength: { value: 6, message: "Password at least 6 characters or longer" },
                         })} /> */}
-                        <select type="option" className="select select-bordered w-full max-w-xs">
+                        <select type="option" className="select select-bordered w-full max-w-xs" {...register("option")}>
                             <option disabled selected>Buyers Account</option>
                             <option>Seller Account</option>
                         </select>
