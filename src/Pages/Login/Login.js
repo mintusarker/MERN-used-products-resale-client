@@ -7,9 +7,9 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [loginError, setLoginError] = useState('');
-    const { providerLogin } = useContext(AuthContext);
+    const { providerLogin, signIn } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
+    const [loginError, setLoginError] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -18,7 +18,18 @@ const Login = () => {
 
     const handleLogin = data => {
         console.log(data)
-    }
+        setLoginError('')
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.log(error.message)
+                setLoginError(error.message)
+            })
+    };
+
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
@@ -30,7 +41,7 @@ const Login = () => {
                 }
             })
             .catch(error => console.error(error));
-    }
+    };
 
     return (
         <div className='h-[700px] flex justify-center items-center'>
