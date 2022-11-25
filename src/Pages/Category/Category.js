@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -5,11 +6,19 @@ const Category = () => {
 
     const [categories, setCategories] = useState([]);
 
-    useEffect(() => {
-        fetch('http://localhost:5000/itemCategory')
-            .then(res => res.json())
-            .then(data => setCategories(data))
-    }, [])
+     axios.get('http://localhost:5000/itemCategory')
+     .then(data => setCategories(data.data))
+
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/itemCategory')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             setCategories(data)
+    //         })
+    // }, [])
+
+    
     return (
         <div>
             <h2 className='text-2xl text-center mb-5'>Category</h2>
