@@ -8,6 +8,7 @@
         "use": "1 year",
         "name": "Hp",
         "series": "Ryzen 5000",
+        "date": "12/11/2022",
         "image_url": "https://static-01.daraz.com.np/p/5f2385e0e725144c5e0b898dbdc6bdee.jpg"
     },
     {
@@ -19,6 +20,7 @@
         "use": "1 year",
         "name": "Asus",
         "series": "Ryzen 5000",
+        "date": "11/5/2022",
         "image_url": "https://nexusit.com.bd/wp-content/uploads/2020/07/Asus-D509DJ-AMD-Ryzen-5-3500U-Nexus.jpg"
     },
     {
@@ -30,6 +32,7 @@
         "use": "1 year",
         "name": "Lenovo",
         "series": "Ryzen 5000",
+        "date": "11/10/2022",
         "image_url": "https://d1dtruvuor2iuy.cloudfront.net/media/catalog/product/p/w/pwb000257147.jpg"
     },
     {
@@ -41,6 +44,7 @@
         "use": "1 year",
         "name": "HP",
         "series": "Core i5",
+        "date": "11/16/2022",
         "image_url": "https://images.hothardware.com/contentimages/newsitem/57218/content/small_elitebook-865.jpg"
     },
     {
@@ -52,6 +56,7 @@
         "use": "8 month",
         "name": "Asus",
         "series": "Core i7",
+        "date": "14/9/2022",
         "image_url": "https://m.media-amazon.com/images/I/61U4VqU0xbL.jpg"
     },
     {
@@ -63,6 +68,7 @@
         "use": "5 month",
         "name": "Lenovo",
         "series": "Core i5",
+        "date": "10/10/2022",
         "image_url": "https://lappyvalley.com/wp-content/uploads/2022/05/ideapad-gaming-3-002-500x500-1.jpg"
     }
 ]
