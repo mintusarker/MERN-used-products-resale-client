@@ -1,0 +1,68 @@
+[
+    {
+        "_id": "0282e0e58a5c404fbd15261f11c2ab6a",
+        "category_id": "01",
+        "resell_price": "750",
+        "price": "900",
+        "location": "Uttara, Dhaka",
+        "use": "1 year",
+        "name": "Hp",
+        "series": "Ryzen 5000",
+        "image_url": "https://static-01.daraz.com.np/p/5f2385e0e725144c5e0b898dbdc6bdee.jpg"
+    },
+    {
+        "_id": "0282e0e58a5c404fbd15261f11c2ab6b",
+        "category_id": "02",
+        "resell_price": "650",
+        "price": "900",
+        "location": "Dhanmondi, Dhaka",
+        "use": "1 year",
+        "name": "Asus",
+        "series": "Ryzen 5000",
+        "image_url": "https://nexusit.com.bd/wp-content/uploads/2020/07/Asus-D509DJ-AMD-Ryzen-5-3500U-Nexus.jpg"
+    },
+    {
+        "_id": "f69a695f037cd9484cecaea37ca71011",
+        "category_id": "03",
+        "resell_price": "700",
+        "price": "950",
+        "location": "Tejgoan, Dhaka",
+        "use": "1 year",
+        "name": "Lenovo",
+        "series": "Ryzen 5000",
+        "image_url": "https://d1dtruvuor2iuy.cloudfront.net/media/catalog/product/p/w/pwb000257147.jpg"
+    },
+    {
+        "_id": "2e78e5e0310c2e9adbb6efb1a263e745",
+        "category_id": "01",
+        "resell_price": "650",
+        "price": "850",
+        "location": "Uttara, Dhaka",
+        "use": "1 year",
+        "name": "HP",
+        "series": "Core i5",
+        "image_url": "https://images.hothardware.com/contentimages/newsitem/57218/content/small_elitebook-865.jpg"
+    },
+    {
+        "_id": "a713ee936ff5574273f0f769f5c5b20e",
+        "category_id": "02",
+        "resell_price": "750",
+        "price": "900",
+        "location": "Malibag, Dhaka",
+        "use": "8 month",
+        "name": "Asus",
+        "series": "Core i7",
+        "image_url": "https://m.media-amazon.com/images/I/61U4VqU0xbL.jpg"
+    },
+    {
+        "_id": "e342b6c0c8efc8ca9e811991dc8a7900",
+        "category_id": "03",
+        "resell_price": "700",
+        "price": "900",
+        "location": "Mirpur, Dhaka",
+        "use": "5 month",
+        "name": "Lenovo",
+        "series": "Core i5",
+        "image_url": "https://lappyvalley.com/wp-content/uploads/2022/05/ideapad-gaming-3-002-500x500-1.jpg"
+    }
+]
