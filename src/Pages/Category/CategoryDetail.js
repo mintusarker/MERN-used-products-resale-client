@@ -5,6 +5,7 @@ import Category from './Category';
 import ItemCategory from './ItemCategory';
 
 const CategoryDetail = () => {
+    const [items, setItems] = useState([]);
 
     const products = useLoaderData()
     console.log(products)
@@ -25,14 +26,17 @@ const CategoryDetail = () => {
                 products?.map(product => <ItemCategory
                 key={product?._id}
                 product={product}
+                setItems={setItems}
                 >
                 </ItemCategory>)
             }
            </div>
 
            {
-            <BookingModal>
-                
+            <BookingModal
+            items={items}
+            setItems={setItems}
+            >     
             </BookingModal>
            }
         </div>
