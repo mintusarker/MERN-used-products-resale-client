@@ -4,11 +4,11 @@ import BookingModal from '../BookingModal/BookingModal';
 import Category from './Category';
 import ItemCategory from './ItemCategory';
 
-const CategoryDetail = () => {
+const CategoryDetail = (id) => {
     const [items, setItems] = useState([]);
 
     const products = useLoaderData()
-    console.log(products)
+
 
     // const [data, setData] = useState([]);
 

@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashboardLayout from "../layout/DashboardLayout";
 import Main from "../layout/Main";
 import Blogs from "../Pages/Blogs/Blogs";
 import CategoryDetail from "../Pages/Category/CategoryDetail";
@@ -36,10 +37,19 @@ const router = createBrowserRouter([
         ]
     },
     {
+        path: '/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
+            {
+                
+            }
+        ]
+    },
+    {
         path: '*',
         element: <div className='text-center text-4xl text-warning m-56 pt-8'>
-        <h3> Ops!! Page Not found: 404</h3> <p>You provide a wrong link .</p>
-    </div>
+            <h3> Ops!! Page Not found: 404</h3> <p>You provide a wrong link .</p>
+        </div>
     }
 ])
 
