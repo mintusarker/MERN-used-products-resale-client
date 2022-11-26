@@ -7,7 +7,8 @@ import ItemCategory from './ItemCategory';
 const CategoryDetail = () => {
     const [items, setItems] = useState([]);
 
-    const products = useLoaderData()
+    const products = useLoaderData();
+    // console.log(products)
 
 
     // const [data, setData] = useState([]);

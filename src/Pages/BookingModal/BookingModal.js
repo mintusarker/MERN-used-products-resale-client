@@ -8,6 +8,7 @@ const BookingModal = ({ items, setItems }) => {
     const handleBooking = (event) => {
         event.preventDefault();
         const form = event.target;
+        // const image = form.image.value;
         const item = form.item.value;
         const price = form.price.value;
         const name = form.name.value;
@@ -16,6 +17,7 @@ const BookingModal = ({ items, setItems }) => {
         const location = form.location.value;
 
         const booking = {
+            // image,
             price: price,
             itemName: item,
             userName: name,
@@ -32,12 +34,12 @@ const BookingModal = ({ items, setItems }) => {
             },
             body: JSON.stringify(booking)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            setItems(null);
-            toast.success('Your Booking Confirmed')
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setItems(null);
+                toast.success('Your Booking Confirmed')
+            })
     }
 
     return (
@@ -47,8 +49,9 @@ const BookingModal = ({ items, setItems }) => {
                 <div className="modal-box relative">
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-lg font-semibold">Laptop Name : {items?.name}</h3>
-                    <img className='h-14 w-14' name='image' src={items?.image_url} alt="" />
+
                     <form onSubmit={handleBooking} className='grid gap-3 mt-10 grid-cols-1'>
+                        <img className='h-14 w-14' name='image' src={items?.image_url} alt="" />
                         <input name='item' type="text" defaultValue={items?.name} disabled className="input input-bordered w-full" />
                         <input name='price' type="text" defaultValue={items?.resell_price} disabled className="input input-bordered w-full" />
                         <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input input-bordered w-full" />
