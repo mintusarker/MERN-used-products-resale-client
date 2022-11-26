@@ -3,6 +3,7 @@ import DashboardLayout from "../layout/DashboardLayout";
 import Main from "../layout/Main";
 import Blogs from "../Pages/Blogs/Blogs";
 import CategoryDetail from "../Pages/Category/CategoryDetail";
+import MyOrders from "../Pages/Dashboard/Orders/MyOrders";
 import Home from "../Pages/HomePage/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
@@ -41,7 +42,8 @@ const router = createBrowserRouter([
         element: <DashboardLayout></DashboardLayout>,
         children: [
             {
-                
+                path: '/dashboard/orders',
+                element: <MyOrders></MyOrders>
             }
         ]
     },
