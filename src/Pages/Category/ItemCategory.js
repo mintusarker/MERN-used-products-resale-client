@@ -11,7 +11,7 @@ const ItemCategory = ({ product, setItems }) => {
                     <h2 className="card-title">Brand: {name}</h2>
                     <p className='text-blue-500'>Version : {series} </p>
                     <p>Original Price: {price}</p>
-                    <p>Resell Price: {resell_price}</p>
+                    <p>Resell Price: number({resell_price})</p>
                     <p>Used : {use}</p>
                     <p>Location : {location}</p>
                     <p>Posted time : {date}</p>

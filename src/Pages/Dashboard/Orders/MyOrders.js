@@ -1,34 +1,47 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 import Loading from '../../Loading/Loading';
 
 const MyOrders = () => {
 
+    const [bookings, setBookings] = useState([]);
     const { loading } = useContext(AuthContext)
 
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
-    const { data: bookings = [] } = useQuery({
-        queryKey: ['bookings', user?.email],
-        queryFn: async () => {
-            const res = await fetch(url, {
-                headers: {
-                    authorization: `bearer ${localStorage.getItem('accessToken')}`
-                }
-            });
-            const data = await res.json();
-            return data;
-        }
-    })
+    useEffect(() => {
+        fetch(`http://localhost:5000/bookings?email=${user?.email}`,{
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => setBookings(data))
+    }, [user?.email])
 
-    if(loading){
+
+    // const url = `http://localhost:5000/bookings?email=${user?.email}`;
+
+    // const { data: bookings = [] } = useQuery({
+    //     queryKey: ['bookings', user?.email],
+    //     queryFn: async () => {
+    //         const res = await fetch(url,{
+    //             headers: {
+    //                 authorization: `bearer ${localStorage.getItem('accessToken')}`
+    //             }
+    //         });
+    //         const data = await res.json();
+    //         return data;
+    //     }
+    // })
+
+    if (loading) {
         return <Loading></Loading>
     }
-    
+
     return (
         <div>
             <h2 className='text-2xl'>My Orders</h2>
@@ -54,15 +67,16 @@ const MyOrders = () => {
                                     <td>
                                         {
                                             booking?.price && !booking.paid &&
-                                            <Link to={`/dashboard/payment/${booking._id}`}><button className='btn btn-primary btn-sm'>Pay</button></Link>
+                                            <Link to={`/dashboard/payment/${booking?._id}`}><button className='btn btn-primary btn-sm'>Pay</button></Link>
                                         }
                                         {
-                                            booking?.price && booking.paid && <span className='font-semibold text-green-500'>Paid</span>
+                                            booking?.price && booking?.paid && <span className='font-semibold text-green-500'>Paid</span>
                                         }
 
                                     </td>
                                 </tr>)
                         }
+
                     </tbody>
                 </table>
             </div>

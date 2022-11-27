@@ -33,6 +33,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 setLoginEmail(data.email);
+                // navigate(from, { replace: true });
                 // navigate('/');
             })
             .catch(error => {

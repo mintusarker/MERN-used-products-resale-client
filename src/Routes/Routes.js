@@ -9,13 +9,17 @@ import MyOrders from "../Pages/Dashboard/Orders/MyOrders";
 import Home from "../Pages/HomePage/Home/Home";
 import Login from "../Pages/Login/Login";
 import Payment from "../Pages/Payment/Payment";
+import DisplayError from "../Pages/SharePage/DisplayError/DisplayError";
 import SignUp from "../Pages/SignUp/SignUp";
+import AllUser from "../Pages/Users/AllUser";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/',
@@ -42,7 +46,8 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/dashboard/orders',
@@ -56,10 +61,14 @@ const router = createBrowserRouter([
                 path: '/dashboard/myproduct',
                 element: <MyProducts></MyProducts>
             },
+            // {
+            //     path: '/dashboard/payment/:id',
+            //     element: <Payment></Payment>,
+            //     loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
+            // },
             {
-                path: '/dashboard/payment/:id',
-                element: <Payment></Payment>,
-                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
+                path: '/dashboard/allusers',
+                element: <AllUser></AllUser>
             }
         ]
     },

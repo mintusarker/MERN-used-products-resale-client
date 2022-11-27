@@ -1,22 +1,46 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
+import Loading from '../Loading/Loading';
 
 const Category = () => {
 
+    const {Loading} = useContext(AuthContext)
+
     const [categories, setCategories] = useState([]);
 
-     axios.get('http://localhost:5000/itemCategory')
-     .then(data => setCategories(data.data))
+    //  axios.get('http://localhost:5000/itemCategory')
+    //  .then(data => setCategories(data.data))
 
 
-    // const { data } = useQuery({
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/itemCategory')
+    //         .then(res => res.json())
+    //         .then(data => setCategories(data))
+    // }, [])
+
+
+    // const { data: categories, isLoading } = useQuery({
     //     queryKey: ['itemCategory'],
-    //     queryFn: axios.get('http://localhost:5000/itemCategory')
-    //         .then(data => setCategories(data.data))
+    //     queryFn: async () => {
+    //         const res = await fetch('http://localhost:5000/itemCategory');
+    //         const data = await res.json();
+    //         return data;
+    //     }
     // });
 
+
+    const { data } = useQuery({
+        queryKey: ['itemCategory'],
+        queryFn: axios.get('http://localhost:5000/itemCategory')
+            .then(data => setCategories(data.data))
+    });
+
+    if (Loading) {
+        return <Loading></Loading>
+    }
 
     return (
         <div>

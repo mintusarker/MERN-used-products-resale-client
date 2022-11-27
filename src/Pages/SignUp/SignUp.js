@@ -37,6 +37,7 @@ const SignUp = () => {
                         saveUser(data.name, data.email, data.option)
                     })
                     .catch(err => console.log(err));
+                    // navigate('/')
             })
             .catch(error => {
                 console.error(error)
