@@ -8,6 +8,7 @@ import MyProducts from "../Pages/Dashboard/MyProducts/MyProducts";
 import MyOrders from "../Pages/Dashboard/Orders/MyOrders";
 import Home from "../Pages/HomePage/Home/Home";
 import Login from "../Pages/Login/Login";
+import Payment from "../Pages/Payment/Payment";
 import SignUp from "../Pages/SignUp/SignUp";
 
 
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/myproduct',
                 element: <MyProducts></MyProducts>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
             }
         ]
     },
