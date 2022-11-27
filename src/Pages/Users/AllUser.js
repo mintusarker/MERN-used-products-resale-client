@@ -14,11 +14,14 @@ const AllUser = () => {
 
     const handleMakeAdmin = id => {
         fetch(`http://localhost:5000/users/admin/${id}`, {
-            method: 'PUT'
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
-                if(data.modifiedCount > 0){
+                if (data.modifiedCount > 0) {
                     toast.success('Make Admin Successful');
                     refetch();
                 }
@@ -28,11 +31,14 @@ const AllUser = () => {
 
     const handleDeleteProduct = id => {
         fetch(`http://localhost:5000/users/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
-              console.log(data)
+                console.log(data)
                 if (data.deletedCount > 0) {
                     refetch();
                     toast.success(`Product deleted successfully`)
@@ -64,7 +70,7 @@ const AllUser = () => {
                                 <td>{user?.email}</td>
                                 <td>{user?.option}</td>
                                 <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user?._id)} className='btn btn-sm btn-primary'>Make Admin</button>}</td>
-                                <td><button onClick={()=>handleDeleteProduct(user?._id)} className='btn btn-sm btn-warning'>Delete</button></td>
+                                <td><button onClick={() => handleDeleteProduct(user?._id)} className='btn btn-sm btn-warning'>Delete</button></td>
                             </tr>)
                         }
                     </tbody>

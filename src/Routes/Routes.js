@@ -11,7 +11,10 @@ import Login from "../Pages/Login/Login";
 import Payment from "../Pages/Payment/Payment";
 import DisplayError from "../Pages/SharePage/DisplayError/DisplayError";
 import SignUp from "../Pages/SignUp/SignUp";
+import AllBuyers from "../Pages/Users/AllBuyers";
+import AllSellers from "../Pages/Users/AllSellers";
 import AllUser from "../Pages/Users/AllUser";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 
 
@@ -61,15 +64,23 @@ const router = createBrowserRouter([
                 path: '/dashboard/myproduct',
                 element: <MyProducts></MyProducts>
             },
-            // {
-            //     path: '/dashboard/payment/:id',
-            //     element: <Payment></Payment>,
-            //     loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
-            // },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+            },
             {
                 path: '/dashboard/allusers',
-                element: <AllUser></AllUser>
-            }
+                element: <AdminRoute><AllUser></AllUser></AdminRoute>
+            },
+            {
+                path: '/dashboard/allsellers',
+                element: <AllSellers></AllSellers>
+            },
+            {
+                path: '/dashboard/allbuyers',
+                element: <AllBuyers></AllBuyers>
+            },
         ]
     },
     {

@@ -53,7 +53,7 @@ const BookingModal = ({ items, setItems }) => {
                     <form onSubmit={handleBooking} className='grid gap-3 mt-10 grid-cols-1'>
                         <img className='h-14 w-14' name='image' src={items?.image_url} alt="" />
                         <input name='item' type="text" defaultValue={items?.name} disabled className="input input-bordered w-full" />
-                        <input name='price' type="text" defaultValue={items?.resell_price} disabled className="input input-bordered w-full" />
+                        <input name='price' type="text" defaultValue={items?.resell_price}$ disabled className="input input-bordered w-full" />
                         <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input input-bordered w-full" />
                         <input name='email' type="email" defaultValue={user?.email} disabled placeholder="Email Address" className="input input-bordered w-full" />
                         <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full" />
