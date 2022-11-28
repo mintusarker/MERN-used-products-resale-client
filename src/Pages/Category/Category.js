@@ -7,7 +7,7 @@ import Loading from '../Loading/Loading';
 
 const Category = () => {
 
-    const {Loading} = useContext(AuthContext)
+    const { loading } = useContext(AuthContext)
 
     const [categories, setCategories] = useState([]);
 
@@ -15,11 +15,11 @@ const Category = () => {
     //  .then(data => setCategories(data.data))
 
 
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/itemCategory')
-    //         .then(res => res.json())
-    //         .then(data => setCategories(data))
-    // }, [])
+    useEffect(() => {
+        fetch('http://localhost:5000/itemCategory')
+            .then(res => res.json())
+            .then(data => setCategories(data))
+    }, [])
 
 
     // const { data: categories, isLoading } = useQuery({
@@ -32,13 +32,13 @@ const Category = () => {
     // });
 
 
-    const { data } = useQuery({
-        queryKey: ['itemCategory'],
-        queryFn: axios.get('http://localhost:5000/itemCategory')
-            .then(data => setCategories(data.data))
-    });
+    // const { data } = useQuery({
+    //     queryKey: ['itemCategory'],
+    //     queryFn: axios.get('http://localhost:5000/itemCategory')
+    //         .then(data => setCategories(data.data))
+    // });
 
-    if (Loading) {
+    if (loading) {
         return <Loading></Loading>
     }
 

@@ -81,7 +81,7 @@ const AddProduct = () => {
                 <div className="form-control w-full max-w-xs">
                     <label className="label"><span className="label-text">Product Name</span></label>
                     <input type="text" className="input input-bordered w-full max-w-xs" {...register("name", {
-                        required: "Name is required"
+                        required: "Product name is required"
                     })} />
                     {errors.name && <p className='text-red-600'>{errors.name.message}</p>}
                 </div>
@@ -91,7 +91,7 @@ const AddProduct = () => {
                 <div className="form-control w-full max-w-xs">
                     <label className="label"><span className="label-text">Price</span></label>
                     <input type="text" className="input input-bordered w-full max-w-xs" {...register("price", {
-                        required: "price is required"
+                        required: "Price is required"
                     })} />
                     {errors.price && <p className='text-red-600'>{errors.price.message}</p>}
                 </div>
@@ -100,7 +100,7 @@ const AddProduct = () => {
                 <div className="form-control w-full max-w-xs">
                     <label className="label"><span className="label-text">Condition</span></label>
                     <input type="text" className="input input-bordered w-full max-w-xs" {...register("condition", {
-                        required: "condition is required"
+                        required: "Condition is required"
                     })} />
                     {errors.condition && <p className='text-red-600'>{errors.condition.message}</p>}
                 </div>
@@ -163,5 +163,3 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
-
-//product name, price, condition type(excellent, good, fair), mobile number, location (Chittagong, Dhaka, etc.), product category (every product should be under a category), description, price, Year of purchase and other relevant information

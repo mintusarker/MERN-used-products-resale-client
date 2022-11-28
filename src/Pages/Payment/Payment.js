@@ -22,7 +22,7 @@ const Payment = () => {
     return (
         <div>
             <h2 className='text-2xl'>Payment for {booking?.itemName} Laptop</h2>
-            <h2 className='text-xl'>Please Pay {booking?.price}</h2>
+            <h2 className='text-xl'>Please Pay <span className='text-amber-500'>{booking?.price} Tk.</span></h2>
 
             <div className='my-8 w-96'>
                 <Elements stripe={stripePromise}>
