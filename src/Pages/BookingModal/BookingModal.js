@@ -17,7 +17,7 @@ const BookingModal = ({ items, setItems }) => {
         const location = form.location.value;
 
         const booking = {
-            image,
+            image:items?.image_url,
             price: price,
             itemName: item,
             userName: name,
@@ -32,7 +32,7 @@ const BookingModal = ({ items, setItems }) => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(booking)
+            body: JSON.stringify({...booking, image:items?.image_url})
         })
             .then(res => res.json())
             .then(data => {

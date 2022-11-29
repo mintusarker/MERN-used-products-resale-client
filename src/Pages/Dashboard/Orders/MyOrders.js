@@ -13,13 +13,13 @@ const MyOrders = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bookings?email=${user?.email}`,{
+        fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })
-        .then(res => res.json())
-        .then(data => setBookings(data))
+            .then(res => res.json())
+            .then(data => setBookings(data))
     }, [user?.email])
 
 
@@ -44,7 +44,7 @@ const MyOrders = () => {
 
     return (
         <div>
-            <h2 className='text-2xl'>My Orders</h2>
+            <h2 className='text-2xl my-5'>My Orders</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -61,7 +61,13 @@ const MyOrders = () => {
                             bookings?.map((booking, i) =>
                                 <tr>
                                     <th>{i + 1}</th>
-                                    <th> <img src={booking?.image_url} alt="" /> </th>
+                                    <th>
+                                        <div className="avatar">
+                                            <div className="w-24 rounded-xl">
+                                                <img src={booking?.image} alt="" />
+                                            </div>
+                                        </div>
+                                    </th>
                                     <td>{booking?.itemName}</td>
                                     <td>{booking?.price}</td>
                                     <td>

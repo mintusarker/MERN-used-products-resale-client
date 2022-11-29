@@ -9,6 +9,7 @@ import MyOrders from "../Pages/Dashboard/Orders/MyOrders";
 import Home from "../Pages/HomePage/Home/Home";
 import Login from "../Pages/Login/Login";
 import Payment from "../Pages/Payment/Payment";
+import ReportedItem from "../Pages/ReportToAdmin/ReportedItem";
 import ReportToAdmin from "../Pages/ReportToAdmin/ReportToAdmin";
 import DisplayError from "../Pages/SharePage/DisplayError/DisplayError";
 import SignUp from "../Pages/SignUp/SignUp";
@@ -16,7 +17,9 @@ import AllBuyers from "../Pages/Users/AllBuyers";
 import AllSellers from "../Pages/Users/AllSellers";
 import AllUser from "../Pages/Users/AllUser";
 import AdminRoute from "./AdminRoute";
+import BuyersRoute from "./BuyersRoute";
 import PrivateRoute from "./PrivateRoute";
+import SellerRoute from "./SellerRoute";
 
 
 const router = createBrowserRouter([
@@ -61,15 +64,15 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard/orders',
-                element: <MyOrders></MyOrders>
+                element: <BuyersRoute><MyOrders></MyOrders></BuyersRoute>
             },
             {
                 path: '/dashboard/addproduct',
-                element: <AddProduct></AddProduct>
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
             },
             {
                 path: '/dashboard/myproduct',
-                element: <MyProducts></MyProducts>
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
             },
             {
                 path: '/dashboard/payment/:id',
@@ -88,6 +91,10 @@ const router = createBrowserRouter([
                 path: '/dashboard/allbuyers',
                 element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
+            {
+                path: '/dashboard/reportitem',
+                element: <AdminRoute><ReportedItem></ReportedItem></AdminRoute>
+            }
         ]
     },
     {

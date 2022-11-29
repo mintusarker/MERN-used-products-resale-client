@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
 import Loading from '../Loading/Loading';
+import { FaCheck } from "react-icons/fa";
 
 const AllSellers = () => {
 
@@ -19,7 +20,7 @@ const AllSellers = () => {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
-             }
+            }
         })
             .then(res => res.json())
             .then(data => {
@@ -31,9 +32,30 @@ const AllSellers = () => {
             })
     };
 
-   if(isLoading){
-    return <Loading></Loading>
-   }
+    const handleStatusUpdate = id => {
+        fetch(`http://localhost:5000/user/sellers/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('genius-token')}`
+
+            },
+            body: JSON.stringify({ status: 'Verified' })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    toast.success('Seller Verified successfully')
+                }
+            })
+
+    }
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
 
     return (
@@ -56,10 +78,17 @@ const AllSellers = () => {
                         {
                             sellers.map((seller, i) => <tr>
                                 <th>{i + 1}</th>
-                                <td>{seller?.name}</td>
+                                <td><div className='flex'>
+                                    <div>
+                                        {seller?.name}
+                                    </div>
+                                    <div>
+                                        {seller?.status ? <FaCheck className='badge badge-md bg-blue-700 rounded-xl p-1 m-1'></FaCheck> : ''}
+                                    </div>
+                                </div></td>
                                 <td>{seller?.email}</td>
                                 <td>{seller?.option}</td>
-                                <td><button className='btn btn-primary btn-sm'>Verify</button></td>
+                                <td><button onClick={() => handleStatusUpdate(seller?._id)} className='btn btn-secondary btn-sm'>{seller?.status ? seller?.status : 'Verify'}</button></td>
                                 <td><button onClick={() => handleDeleteSellers(seller?._id)} className='btn btn-warning btn-sm'>Delete</button></td>
                             </tr>)
                         }

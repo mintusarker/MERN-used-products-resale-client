@@ -2,11 +2,15 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 import useAdmin from '../Hooks/UseAdmin';
+import UseBuyer from '../Hooks/UseBuyer';
+import UseSeller from '../Hooks/UseSeller';
 import Navbar from '../Pages/SharePage/Nabver/Navbar';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
     const [isAdmin] = useAdmin(user?.email)
+    const [isSeller] = UseSeller(user?.email);
+    const [isBuyer] = UseBuyer(user?.email);
 
     return (
         <div>
@@ -19,16 +23,26 @@ const DashboardLayout = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 text-base-content">
-                        <li><Link to='/dashboard/orders'>My Orders</Link></li>
-                        <li><Link to='/dashboard/addproduct'>Add A Product</Link></li>
-                        <li><Link to='/dashboard/myproduct'>My Products</Link></li>
+                    <ul className="menu mt-10 p-4 w-80 text-base-content">
+                        {
+                            isBuyer && <>
+                                <li className='badge-primary'><Link to='/dashboard/orders'>My Orders</Link></li>
+                            </>
+                        }
+
+                        {
+                            isSeller && <>
+                                <li className='badge-primary'><Link to='/dashboard/addproduct'>Add A Product</Link></li>
+                                <li className='badge-primary my-5'><Link to='/dashboard/myproduct'>My Products</Link></li>
+                            </>
+                        }
+
                         {
                             isAdmin && <>
-                                <li><Link to='/dashboard/allusers'>All Users</Link></li>
-                                <li><Link to='/dashboard/allsellers'>All Sellers</Link></li>
-                                <li><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
-                                <li><Link to='/dashboard/reportitem'>Reported Item</Link></li>
+                                <li className='badge-primary'><Link to='/dashboard/allusers'>All Users</Link></li>
+                                <li className='badge-primary my-5'><Link to='/dashboard/allsellers'>All Sellers</Link></li>
+                                <li className='badge-primary'><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
+                                <li className='badge-primary my-5'><Link to='/dashboard/reportitem'>Reported Item</Link></li>
                             </>
                         }
 

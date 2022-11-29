@@ -1,5 +1,6 @@
 import React from 'react';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 
 const Products = ({ product, handleDeleteProduct }) => {
@@ -27,7 +28,7 @@ const Products = ({ product, handleDeleteProduct }) => {
         const advertise = {
             image,
             name,
-            price,
+            price: product?.price,
             detail,
             time,
             condition,
@@ -40,7 +41,7 @@ const Products = ({ product, handleDeleteProduct }) => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(advertise)
+            body: JSON.stringify({...advertise, price: parseInt(price)})
         })
             .then(res => res.json())
             .then(data => {
@@ -65,16 +66,16 @@ const Products = ({ product, handleDeleteProduct }) => {
                         <button onClick={() => handleDeleteProduct(product?._id)} className="btn btn-sm btn-primary">Delete</button>
                         <button className="btn btn-sm btn-primary">Available</button>
                         <button onClick={handleAdvertise} className="btn btn-sm btn-primary">Advertise</button>
-                        <>
+                        {/* <>
                             {
                                 product?.price && !product?.paid &&
-                                <button className='btn btn-primary btn-sm'>Pay</button>
+                               <Link to={`/dashboard/payment/${product?._id}`}><button className='btn btn-primary w-full btn-sm'>Pay</button></Link>
                             }
                             {
                                 product?.price && product?.paid && <span className='font-semibold text-green-500'>Paid</span>
                             }
 
-                        </>
+                        </> */}
                     </div>
                 </div>
             </div>
