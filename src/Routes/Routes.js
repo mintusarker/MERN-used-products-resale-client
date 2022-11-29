@@ -9,6 +9,7 @@ import MyOrders from "../Pages/Dashboard/Orders/MyOrders";
 import Home from "../Pages/HomePage/Home/Home";
 import Login from "../Pages/Login/Login";
 import Payment from "../Pages/Payment/Payment";
+import ReportToAdmin from "../Pages/ReportToAdmin/ReportToAdmin";
 import DisplayError from "../Pages/SharePage/DisplayError/DisplayError";
 import SignUp from "../Pages/SignUp/SignUp";
 import AllBuyers from "../Pages/Users/AllBuyers";
@@ -44,7 +45,13 @@ const router = createBrowserRouter([
                 path: '/itemName/:id',
                 element: <CategoryDetail></CategoryDetail>,
                 loader: ({ params }) => fetch(`http://localhost:5000/itemName/${params.id}`)
+            },
+            {
+                path: '/reportToAdmin/:id',
+                element: <ReportToAdmin></ReportToAdmin>,
+                loader: ({ params }) => fetch(`http://localhost:5000/itemName/${params.id}`)
             }
+
         ]
     },
     {
@@ -75,11 +82,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allsellers',
-                element: <AllSellers></AllSellers>
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
                 path: '/dashboard/allbuyers',
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
         ]
     },

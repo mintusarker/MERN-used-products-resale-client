@@ -41,12 +41,6 @@ const MyProducts = () => {
   };
 
 
-
-  // const handleAdvertise = (products) =>{
-  //          const product = products?.price;
-  //          console.log(product)
-  // }
-
     return (
         <div className='mt-10'>
             <h2 className='text-2xl pl-5 my-5'>My Products: {products?.length}</h2>

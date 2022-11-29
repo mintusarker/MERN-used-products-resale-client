@@ -113,7 +113,7 @@ const SignUp = () => {
                             required: "Password is required",
                             minLength: { value: 6, message: "Password at least 6 characters or longer" },
                         })} /> */}
-                        <select type="option" className="select select-bordered w-full max-w-xs" {...register("option")}>
+                        <select type="text" className="select select-bordered w-full max-w-xs" {...register("option")}>
                             <option selected>Buyers Account</option>
                             <option>Seller Account</option>
                         </select>

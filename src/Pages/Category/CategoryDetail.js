@@ -10,15 +10,6 @@ const CategoryDetail = () => {
     const products = useLoaderData();
     // console.log(products)
 
-
-    // const [data, setData] = useState([]);
-
-    // useEffect(() => { 
-    //     fetch(`http://localhost:5000/itemName/${id}}`)
-    //     .then(res => res.json())
-    //     .then(data => console.log(data))
-    // },[id])
-
     return (
         <div>
             <h2 className='text-xl pl-14 my-10 text-center'>Details</h2>

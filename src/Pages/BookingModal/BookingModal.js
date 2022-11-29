@@ -8,7 +8,7 @@ const BookingModal = ({ items, setItems }) => {
     const handleBooking = (event) => {
         event.preventDefault();
         const form = event.target;
-        // const image = form.image.value;
+        const image = form.image.value;
         const item = form.item.value;
         const price = form.price.value;
         const name = form.name.value;
@@ -17,7 +17,7 @@ const BookingModal = ({ items, setItems }) => {
         const location = form.location.value;
 
         const booking = {
-            // image,
+            image,
             price: price,
             itemName: item,
             userName: name,

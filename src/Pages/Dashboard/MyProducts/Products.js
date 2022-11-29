@@ -1,6 +1,7 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 
+
 const Products = ({ product, handleDeleteProduct }) => {
 
     const { image, price, name, detail, location, condition, phone, time } = product
@@ -51,7 +52,7 @@ const Products = ({ product, handleDeleteProduct }) => {
     return (
         <div>
             <div className="card card-compact border p-5 bg-base-100 shadow-xl">
-                <figure><img className='h-40 w-60' src={image} alt="Shoes" /></figure>
+                <figure><img className='h-40 w-60' src={image} alt="" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{name}</h2>
                     <p>Price: {price}</p>
@@ -64,6 +65,16 @@ const Products = ({ product, handleDeleteProduct }) => {
                         <button onClick={() => handleDeleteProduct(product?._id)} className="btn btn-sm btn-primary">Delete</button>
                         <button className="btn btn-sm btn-primary">Available</button>
                         <button onClick={handleAdvertise} className="btn btn-sm btn-primary">Advertise</button>
+                        <>
+                            {
+                                product?.price && !product?.paid &&
+                                <button className='btn btn-primary btn-sm'>Pay</button>
+                            }
+                            {
+                                product?.price && product?.paid && <span className='font-semibold text-green-500'>Paid</span>
+                            }
+
+                        </>
                     </div>
                 </div>
             </div>

@@ -15,28 +15,19 @@ const Category = () => {
     //  .then(data => setCategories(data.data))
 
 
+
+
     useEffect(() => {
-        fetch('http://localhost:5000/itemCategory')
-            .then(res => res.json())
-            .then(data => setCategories(data))
-    }, [])
+        axios.get('http://localhost:5000/itemCategory')
+        .then(data => setCategories(data.data))
+    }, []);
 
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/itemCategory')
+    //         .then(res => res.json())
+    //         .then(data => setCategories(data))
+    // }, [])
 
-    // const { data: categories, isLoading } = useQuery({
-    //     queryKey: ['itemCategory'],
-    //     queryFn: async () => {
-    //         const res = await fetch('http://localhost:5000/itemCategory');
-    //         const data = await res.json();
-    //         return data;
-    //     }
-    // });
-
-
-    // const { data } = useQuery({
-    //     queryKey: ['itemCategory'],
-    //     queryFn: axios.get('http://localhost:5000/itemCategory')
-    //         .then(data => setCategories(data.data))
-    // });
 
     if (loading) {
         return <Loading></Loading>
