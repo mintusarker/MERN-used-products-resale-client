@@ -17,7 +17,7 @@
 
 * Using two type of login method like email-password based and with Google.
 
-* This projects responsive for mobile and desktop.
+* This projects responsive for mobile and  desktop.
 
 Live Website Link:  [https://used-products-resell.web.app/](https://used-products-resell.web.app/)
 
