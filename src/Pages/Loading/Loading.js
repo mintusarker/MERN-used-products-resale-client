@@ -5,7 +5,6 @@ const Loading = () => {
         <div className="flex justify-center items-center">
             <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
                 <span className="visually-hidden">...</span>
-                {/* <p className='text-center my-20'><button className="btn loading">loading...</button></p> */}
             </div>
         </div>
     );

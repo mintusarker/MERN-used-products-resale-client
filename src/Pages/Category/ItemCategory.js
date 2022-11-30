@@ -23,7 +23,12 @@ const ItemCategory = ({ product, setItems }) => {
                         onClick={() => setItems(product)}
                         className="btn btn-primary text-white">
                         Book Now</label>
-                        <Link to={`/reportToAdmin/${_id}`}><button className='btn btn-primary btn-sm mt-4 text-white'>Report</button></Link>  
+
+                        <label
+                        htmlFor="report-modal"
+                        onClick={() => setItems(product)}
+                        className="btn btn-primary btn-sm mt-4 text-white">
+                        Report</label>
                     </div>
                 </div>
             </div>

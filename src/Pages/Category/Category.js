@@ -22,11 +22,7 @@ const Category = () => {
         .then(data => setCategories(data.data))
     }, []);
 
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/itemCategory')
-    //         .then(res => res.json())
-    //         .then(data => setCategories(data))
-    // }, [])
+    
 
 
     if (loading) {

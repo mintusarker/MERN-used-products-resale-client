@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 import Loading from '../../Loading/Loading';
 
@@ -23,21 +23,6 @@ const MyOrders = () => {
     }, [user?.email])
 
 
-    // const url = `http://localhost:5000/bookings?email=${user?.email}`;
-
-    // const { data: bookings = [] } = useQuery({
-    //     queryKey: ['bookings', user?.email],
-    //     queryFn: async () => {
-    //         const res = await fetch(url,{
-    //             headers: {
-    //                 authorization: `bearer ${localStorage.getItem('accessToken')}`
-    //             }
-    //         });
-    //         const data = await res.json();
-    //         return data;
-    //     }
-    // })
-
     if (loading) {
         return <Loading></Loading>
     }
@@ -48,7 +33,7 @@ const MyOrders = () => {
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
-                        <tr>
+                        <tr className='text-blue-600 font-bold'>
                             <th></th>
                             <th>Image</th>
                             <th>Title</th>
@@ -57,7 +42,7 @@ const MyOrders = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
+                        {bookings?.length &&
                             bookings?.map((booking, i) =>
                                 <tr>
                                     <th>{i + 1}</th>

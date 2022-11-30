@@ -1,3 +1,27 @@
+
+# Project Name : Resell Market
+
+## About Project : 
+
+* This website create base on resell product sell service.
+
+* This projects are also completed by tailwind, daisy ui, react router, react hot toast, react etc.
+
+* The projects also completed by using mongodb database which is special.
+
+* This project have different pages home page, like login, Sign Up, Services, My order, add product etc.
+
+* Create Private route, Admin route.
+
+* create some custom hooks like UseAmin, UseSeller, UseBuyer, useToken . 
+
+* Using two type of login method like email-password based and with Google.
+
+* This projects responsive for mobile and desktop.
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

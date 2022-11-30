@@ -44,7 +44,7 @@ const AllBuyers = () => {
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
-                        <tr>
+                        <tr className='text-blue-600 font-bold'>
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>

@@ -19,13 +19,14 @@ const Advertise = () => {
         })
             .then(res => res.json())
             .then(data => {
-              console.log(data)
+                console.log(data)
                 if (data.deletedCount > 0) {
                     refetch();
                     toast.success('Product deleted successfully');
                 }
             })
     };
+
     return (
         <div className='my-10 px-10'>
             <h2 className='text-2xl mb-10 text-blue-500 text-center'>Advertisement product</h2>
@@ -38,12 +39,8 @@ const Advertise = () => {
                             <p>Description: {advertise?.detail}</p>
                             <p>Price: {advertise?.price} Tk.</p>
                             <p>Used: {advertise?.time}</p>
-                            {/* <p>Condition: {advertise?.condition}</p>
-                            <p>Location: {advertise?.location}</p>
-                            <p>Contact: {advertise?.phone}</p> */}
                             <div className="card-actions justify-end">
-                                <button onClick={()=>handleDeleteProduct(advertise?._id)} className="btn btn-sm btn-primary">Remove</button>
-                                {/* <button className="btn btn-sm btn-primary">Book Now</button> */}
+                                <button onClick={() => handleDeleteProduct(advertise?._id)} className="btn btn-sm btn-primary">Remove</button>
                             </div>
                         </div>
                     </div>)

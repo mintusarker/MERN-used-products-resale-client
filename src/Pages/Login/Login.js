@@ -1,6 +1,7 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import useToken from '../../Hooks/useToken';
@@ -33,6 +34,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 setLoginEmail(data.email);
+                toast.success('User Login successfully')
                 // navigate(from, { replace: true });
                 // navigate('/');
             })
@@ -49,11 +51,33 @@ const Login = () => {
                 const user = result.user
                 console.log(user)
                 if (user) {
+                    const user = result.user
+                    console.log(user)
+                    saveUser(user.displayName, user.email, 'Buyers Account')
                     navigate(from, { replace: true });
                 }
             })
             .catch(error => console.error(error));
     };
+
+
+   // save user information
+    const saveUser = (name, email, option) => {
+        const user = { name, email, option: 'Buyers Account' };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // setUserEmail(email);
+                console.log(data);
+                // navigate('/');
+            })
+    }
 
     return (
         <div className='h-[600px] flex justify-center items-center'>

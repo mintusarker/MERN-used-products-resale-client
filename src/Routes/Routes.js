@@ -10,12 +10,10 @@ import Home from "../Pages/HomePage/Home/Home";
 import Login from "../Pages/Login/Login";
 import Payment from "../Pages/Payment/Payment";
 import ReportedItem from "../Pages/ReportToAdmin/ReportedItem";
-import ReportToAdmin from "../Pages/ReportToAdmin/ReportToAdmin";
 import DisplayError from "../Pages/SharePage/DisplayError/DisplayError";
 import SignUp from "../Pages/SignUp/SignUp";
 import AllBuyers from "../Pages/Users/AllBuyers";
 import AllSellers from "../Pages/Users/AllSellers";
-import AllUser from "../Pages/Users/AllUser";
 import AdminRoute from "./AdminRoute";
 import BuyersRoute from "./BuyersRoute";
 import PrivateRoute from "./PrivateRoute";
@@ -48,13 +46,7 @@ const router = createBrowserRouter([
                 path: '/itemName/:id',
                 element: <CategoryDetail></CategoryDetail>,
                 loader: ({ params }) => fetch(`http://localhost:5000/itemName/${params.id}`)
-            },
-            {
-                path: '/reportToAdmin/:id',
-                element: <ReportToAdmin></ReportToAdmin>,
-                loader: ({ params }) => fetch(`http://localhost:5000/itemName/${params.id}`)
             }
-
         ]
     },
     {
@@ -67,21 +59,17 @@ const router = createBrowserRouter([
                 element: <BuyersRoute><MyOrders></MyOrders></BuyersRoute>
             },
             {
+                path: '/dashboard/payment/:id',
+                element: <BuyersRoute><Payment></Payment></BuyersRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+            },
+            {
                 path: '/dashboard/addproduct',
                 element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
             },
             {
                 path: '/dashboard/myproduct',
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
-            },
-            {
-                path: '/dashboard/payment/:id',
-                element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
-            },
-            {
-                path: '/dashboard/allusers',
-                element: <AdminRoute><AllUser></AllUser></AdminRoute>
             },
             {
                 path: '/dashboard/allsellers',
@@ -94,7 +82,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/reportitem',
                 element: <AdminRoute><ReportedItem></ReportedItem></AdminRoute>
-            }
+            },
         ]
     },
     {

@@ -78,15 +78,18 @@ const AddProduct = () => {
             <h2 className='text-2xl'>Add A Product</h2>
 
             <form className='grid lg:grid-cols-2' onSubmit={handleSubmit(handleAddProduct)}>
+                
                 <div className="form-control w-full max-w-xs">
                     <label className="label"><span className="label-text">Product Name</span></label>
-                    <input type="text" className="input input-bordered w-full max-w-xs" {...register("name", {
+                    <select className="select select-bordered w-full max-w-xs" {...register("name", {
                         required: "Product name is required"
-                    })} />
-                    {errors.name && <p className='text-red-600'>{errors.name.message}</p>}
+                    })}>
+                    <option></option>
+                    <option selected>Hp</option>
+                    <option>Asus</option>
+                    <option>Lenovo</option>
+                </select>
                 </div>
-
-
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label"><span className="label-text">Price</span></label>
@@ -95,7 +98,6 @@ const AddProduct = () => {
                     })} />
                     {errors.price && <p className='text-red-600'>{errors.price.message}</p>}
                 </div>
-
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label"><span className="label-text">Condition</span></label>

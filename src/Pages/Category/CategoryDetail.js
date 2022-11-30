@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import BookingModal from '../BookingModal/BookingModal';
+import ReportModal from '../ReportToAdmin/ReportModal';
 import Category from './Category';
 import ItemCategory from './ItemCategory';
 
@@ -20,7 +21,7 @@ const CategoryDetail = () => {
                         product={product}
                         setItems={setItems}
                     >
-                    </ItemCategory>)
+                    </ItemCategory>) 
                 }
             </div>
 
@@ -31,6 +32,14 @@ const CategoryDetail = () => {
                     setItems={setItems}
                 >
                 </BookingModal>
+            }
+
+            { items &&
+                <ReportModal
+                items={items}
+                setItems={setItems}
+                >
+                </ReportModal>
             }
         </div>
     );

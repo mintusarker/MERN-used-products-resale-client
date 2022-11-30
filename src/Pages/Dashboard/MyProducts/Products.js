@@ -1,26 +1,10 @@
 import React from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
 
 
 const Products = ({ product, handleDeleteProduct }) => {
 
-    const { image, price, name, detail, location, condition, phone, time } = product
-
-
-    // const handleDeleteProduct = id => {
-    //     fetch(`http://localhost:5000/products/${id}`, {
-    //         method: 'DELETE'
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //           console.log(data)
-    //             if (data.deletedCount > 0) {
-    //                 refetch();
-    //                 toast.success('Product deleted successfully');
-    //             }
-    //         })
-    // };
+    const { image, price, name, detail, location, condition, phone, time } = product;
 
 
     const handleAdvertise = () => {
@@ -64,18 +48,8 @@ const Products = ({ product, handleDeleteProduct }) => {
                     <p>Contact: {phone}</p>
                     <div className="card-actions inline-grid">
                         <button onClick={() => handleDeleteProduct(product?._id)} className="btn btn-sm btn-primary">Delete</button>
-                        <button className="btn btn-sm btn-primary">Available</button>
+                        {/* <button className="btn btn-sm btn-primary">Available</button> */}
                         <button onClick={handleAdvertise} className="btn btn-sm btn-primary">Advertise</button>
-                        {/* <>
-                            {
-                                product?.price && !product?.paid &&
-                               <Link to={`/dashboard/payment/${product?._id}`}><button className='btn btn-primary w-full btn-sm'>Pay</button></Link>
-                            }
-                            {
-                                product?.price && product?.paid && <span className='font-semibold text-green-500'>Paid</span>
-                            }
-
-                        </> */}
                     </div>
                 </div>
             </div>
