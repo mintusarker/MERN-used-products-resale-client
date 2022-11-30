@@ -15,7 +15,7 @@ const AddProduct = () => {
     const { data: category, isLoading } = useQuery({
         queryKey: ['itemName'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/itemCategory');
+            const res = await fetch('https://used-products-resale-server-alpha.vercel.app/itemCategory');
             const data = await res.json();
             return data;
         },
@@ -50,7 +50,7 @@ const AddProduct = () => {
                     }
 
                     // save product information to database
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://used-products-resale-server-alpha.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -78,17 +78,17 @@ const AddProduct = () => {
             <h2 className='text-2xl'>Add A Product</h2>
 
             <form className='grid lg:grid-cols-2' onSubmit={handleSubmit(handleAddProduct)}>
-                
+
                 <div className="form-control w-full max-w-xs">
                     <label className="label"><span className="label-text">Product Name</span></label>
                     <select className="select select-bordered w-full max-w-xs" {...register("name", {
                         required: "Product name is required"
                     })}>
-                    <option></option>
-                    <option selected>Hp</option>
-                    <option>Asus</option>
-                    <option>Lenovo</option>
-                </select>
+                        <option></option>
+                        <option selected>Hp</option>
+                        <option>Asus</option>
+                        <option>Lenovo</option>
+                    </select>
                 </div>
 
                 <div className="form-control w-full max-w-xs">

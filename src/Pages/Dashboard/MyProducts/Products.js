@@ -20,7 +20,7 @@ const Products = ({ product, handleDeleteProduct }) => {
             phone,
         };
 
-        fetch('http://localhost:5000/advertise', {
+        fetch('https://used-products-resale-server-alpha.vercel.app/advertise', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

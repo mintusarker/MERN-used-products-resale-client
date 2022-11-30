@@ -11,18 +11,18 @@ const Category = () => {
 
     const [categories, setCategories] = useState([]);
 
-    //  axios.get('http://localhost:5000/itemCategory')
+    //  axios.get('https://used-products-resale-server-alpha.vercel.app/itemCategory')
     //  .then(data => setCategories(data.data))
 
 
 
 
     useEffect(() => {
-        axios.get('http://localhost:5000/itemCategory')
-        .then(data => setCategories(data.data))
+        axios.get('https://used-products-resale-server-alpha.vercel.app/itemCategory')
+            .then(data => setCategories(data.data))
     }, []);
 
-    
+
 
 
     if (loading) {

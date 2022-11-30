@@ -12,10 +12,10 @@ const SignUp = () => {
 
     const [userEmail, setUserEmail] = useState('');
     const [token] = useToken(userEmail);
-    
+
     const navigate = useNavigate();
 
-    if(token){
+    if (token) {
         navigate('/')
     }
 
@@ -37,7 +37,7 @@ const SignUp = () => {
                         saveUser(data.name, data.email, data.option)
                     })
                     .catch(err => console.log(err));
-                    // navigate('/')
+                // navigate('/')
             })
             .catch(error => {
                 console.error(error)
@@ -48,7 +48,7 @@ const SignUp = () => {
     // save user information
     const saveUser = (name, email, option) => {
         const user = { name, email, option };
-        fetch('http://localhost:5000/users', {
+        fetch('https://used-products-resale-server-alpha.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

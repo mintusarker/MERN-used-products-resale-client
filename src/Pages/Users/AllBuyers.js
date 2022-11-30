@@ -8,14 +8,14 @@ const AllBuyers = () => {
     const { data: buyers = [], isLoading, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/user/buyers')
+            const res = await fetch('https://used-products-resale-server-alpha.vercel.app/user/buyers')
             const data = await res.json();
             return data;
         }
     });
 
     const handleDeleteBuyers = id => {
-        fetch(`http://localhost:5000/user/buyers/${id}`, {
+        fetch(`https://used-products-resale-server-alpha.vercel.app/user/buyers/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -31,8 +31,8 @@ const AllBuyers = () => {
             })
     };
 
-    
-    if(isLoading){
+
+    if (isLoading) {
         return <Loading></Loading>
     };
 
@@ -59,7 +59,7 @@ const AllBuyers = () => {
                                 <td>{buyer?.name}</td>
                                 <td>{buyer?.email}</td>
                                 <td>{buyer?.option}</td>
-                                <td><button onClick={()=> handleDeleteBuyers(buyer?._id)} className='btn btn-warning btn-sm'>Delete</button></td>
+                                <td><button onClick={() => handleDeleteBuyers(buyer?._id)} className='btn btn-warning btn-sm'>Delete</button></td>
                             </tr>)
                         }
 

@@ -9,11 +9,11 @@ const CheckoutForm = ({ booking }) => {
     const [clientSecret, setClientSecret] = useState("");
     const stripe = useStripe();
     const elements = useElements();
-    const { price, email, userName , _id} = booking; 
+    const { price, email, userName, _id } = booking;
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://used-products-resale-server-alpha.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const CheckoutForm = ({ booking }) => {
 
         if (confirmError) {
             setCardError(confirmError.message);
-            return; 
+            return;
         }
         if (paymentIntent.status === "succeeded") {
             console.log('card info', card);
@@ -80,7 +80,7 @@ const CheckoutForm = ({ booking }) => {
 
             }
 
-            fetch('http://localhost:5000/payments', {
+            fetch('https://used-products-resale-server-alpha.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -97,9 +97,9 @@ const CheckoutForm = ({ booking }) => {
                         setTransactionId(paymentIntent.id);
                     }
                 });
-            
+
         }
-        setProcessing(false); 
+        setProcessing(false);
         console.log(paymentIntent)
 
     }

@@ -19,7 +19,11 @@
 
 * This projects responsive for mobile and desktop.
 
+Live Website Link:  [https://used-products-resell.web.app/](https://used-products-resell.web.app/)
 
+adminEmail: <kopila@pata.com>
+
+adminPassword: <123456>
 
 
 # Getting Started with Create React App

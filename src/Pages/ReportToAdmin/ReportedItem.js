@@ -6,17 +6,17 @@ import Loading from '../Loading/Loading';
 const ReportedItem = () => {
 
 
-   const {data: reports = [], isLoading, refetch } = useQuery({
-    queryKey: ['report'],
-    queryFn: async () => {
-        const res = await fetch('http://localhost:5000/report');
-        const data = await res.json();
-        return data;
-    }
-   });
+    const { data: reports = [], isLoading, refetch } = useQuery({
+        queryKey: ['report'],
+        queryFn: async () => {
+            const res = await fetch('https://used-products-resale-server-alpha.vercel.app/report');
+            const data = await res.json();
+            return data;
+        }
+    });
 
     const handleDeleteReport = id => {
-        fetch(`http://localhost:5000/report/${id}`, {
+        fetch(`https://used-products-resale-server-alpha.vercel.app/report/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -32,7 +32,7 @@ const ReportedItem = () => {
             })
     };
 
-    if(isLoading){
+    if (isLoading) {
         return <Loading></Loading>
     };
 
@@ -58,13 +58,13 @@ const ReportedItem = () => {
                                     <th>{i + 1}</th>
                                     <td>
                                         <div className="w-24 rounded">
-                                            <img src={report?.image} alt=''/>
+                                            <img src={report?.image} alt='' />
                                         </div>
                                     </td>
                                     <td>{report?.itemName}</td>
                                     <td>{report?.message}</td>
                                     <td>{report?.email}</td>
-                                    <td><button onClick={()=>handleDeleteReport(report?._id)} className='btn btn-sm btn-warning'>Delete</button></td>
+                                    <td><button onClick={() => handleDeleteReport(report?._id)} className='btn btn-sm btn-warning'>Delete</button></td>
                                 </tr>)
                             }
                         </tbody>

@@ -17,7 +17,7 @@ const BookingModal = ({ items, setItems }) => {
         const location = form.location.value;
 
         const booking = {
-            image:items?.image_url,
+            image: items?.image_url,
             price: price,
             itemName: item,
             userName: name,
@@ -27,12 +27,12 @@ const BookingModal = ({ items, setItems }) => {
         }
         console.log(booking)
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://used-products-resale-server-alpha.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({...booking, image:items?.image_url})
+            body: JSON.stringify({ ...booking, image: items?.image_url })
         })
             .then(res => res.json())
             .then(data => {
@@ -47,7 +47,7 @@ const BookingModal = ({ items, setItems }) => {
             <input type="checkbox" id="booking-modal" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box relative">
-                <h2 className='text-center text-2xl text-blue-500'>Booking Form</h2>
+                    <h2 className='text-center text-2xl text-blue-500'>Booking Form</h2>
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-lg font-semibold">Laptop Name : {items?.name}</h3>
                     <form onSubmit={handleBooking} className='grid gap-3 mt-4 grid-cols-1'>

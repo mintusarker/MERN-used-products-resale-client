@@ -13,7 +13,7 @@ const MyOrders = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+        fetch(`https://used-products-resale-server-alpha.vercel.app/bookings?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }

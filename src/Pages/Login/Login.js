@@ -14,7 +14,7 @@ const Login = () => {
     const [loginError, setLoginError] = useState('');
 
     const [loginEmail, setLoginEmail] = useState('');
-    const[token] = useToken(loginEmail);
+    const [token] = useToken(loginEmail);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
 
 
-    if(token){
+    if (token) {
         navigate(from, { replace: true });
     };
 
@@ -61,10 +61,10 @@ const Login = () => {
     };
 
 
-   // save user information
+    // save user information
     const saveUser = (name, email, option) => {
         const user = { name, email, option: 'Buyers Account' };
-        fetch('http://localhost:5000/users', {
+        fetch('https://used-products-resale-server-alpha.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
