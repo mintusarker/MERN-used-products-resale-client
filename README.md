@@ -21,9 +21,9 @@
 
 Live Website Link:  [https://used-products-resell.web.app/](https://used-products-resell.web.app/)
 
-adminEmail: <kopila@pata.com>
+adminEmail: <>
 
-adminPassword: <123456>
+adminPassword: <>
 
 
 # Getting Started with Create React App
