@@ -3,27 +3,29 @@
 
 ## About Project : 
 
-* This website create base on resell product sell service.
+* This website creates based on reselling product sell service.
 
-* This projects are also completed by tailwind, daisy ui, react router, react hot toast, react etc.
+* This project are also completed by tailwind, daisy ui, react router, react hot toast, react etc.
 
-* The projects also completed by using mongodb database which is special.
+* The project also completed by using MongoDB database.
 
-* This project have different pages home page, like login, Sign Up, Services, My order, add product etc.
+* This project has different pages like Login, Sign Up, Services, My order, add product etc.
 
 * Create Private route, Admin route.
 
-* create some custom hooks like UseAmin, UseSeller, UseBuyer, useToken . 
+* Create some custom hooks like UseAmin, UseSeller, UseBuyer, useToken . 
 
-* Using two type of login method like email-password based and with Google.
+* Using two types of login methods like email-password-based and with Google.
 
-* This projects responsive for mobile and  desktop.
+* This project is responsive for mobile and  desktop.
 
 Live Website Link:  [https://used-products-resell.web.app/](https://used-products-resell.web.app/)
 
-adminEmail: <>
+adminEmail: <kopila@pata.com>
 
-adminPassword: <>
+adminPassword: <123456>
+
+
 
 
 # Getting Started with Create React App
