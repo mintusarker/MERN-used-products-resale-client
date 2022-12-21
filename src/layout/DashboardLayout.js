@@ -39,6 +39,7 @@ const DashboardLayout = () => {
 
                         {
                             isAdmin && <>
+                                <li className='badge-primary mt-5'><Link to='/dashboard/allusers'>All User</Link></li>
                                 <li className='badge-primary my-5'><Link to='/dashboard/allsellers'>All Sellers</Link></li>
                                 <li className='badge-primary'><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
                                 <li className='badge-primary my-5'><Link to='/dashboard/reportitem'>Reported Item</Link></li>

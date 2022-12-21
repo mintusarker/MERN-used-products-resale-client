@@ -14,6 +14,7 @@ import DisplayError from "../Pages/SharePage/DisplayError/DisplayError";
 import SignUp from "../Pages/SignUp/SignUp";
 import AllBuyers from "../Pages/Users/AllBuyers";
 import AllSellers from "../Pages/Users/AllSellers";
+import AllUser from "../Pages/Users/AllUser";
 import AdminRoute from "./AdminRoute";
 import BuyersRoute from "./BuyersRoute";
 import PrivateRoute from "./PrivateRoute";
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/itemName/:id',
-                element: <CategoryDetail></CategoryDetail>,
+                element: <PrivateRoute><CategoryDetail></CategoryDetail></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://used-products-resale-server-alpha.vercel.app/itemName/${params.id}`)
             }
         ]
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/myproduct',
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+            {
+                path: '/dashboard/allusers',
+                element: <AdminRoute><AllUser></AllUser></AdminRoute>
             },
             {
                 path: '/dashboard/allsellers',
