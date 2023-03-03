@@ -53,9 +53,9 @@ const AllSellers = () => {
 
     }
 
-    if (isLoading) {
-        return <Loading></Loading>
-    }
+    // if (isLoading) {
+    //     return <Loading></Loading>
+    // }
 
 
     return (

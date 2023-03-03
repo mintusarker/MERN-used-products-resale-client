@@ -17,9 +17,9 @@ const AllBuyers = () => {
     const handleDeleteBuyers = id => {
         fetch(`https://used-products-resale-server-alpha.vercel.app/user/buyers/${id}`, {
             method: 'DELETE',
-            headers: {
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
-            }
+            // headers: {
+            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            // }
         })
             .then(res => res.json())
             .then(data => {
@@ -32,9 +32,9 @@ const AllBuyers = () => {
     };
 
 
-    if (isLoading) {
-        return <Loading></Loading>
-    };
+    // if (isLoading) {
+    //     return <Loading></Loading>
+    // };
 
 
     return (

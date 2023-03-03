@@ -39,7 +39,7 @@ const AddProduct = () => {
                     console.log(imgData.data.url);
                     const product = {
                         name: data.name,
-                        price: data.price,
+                        price: parseInt(data.price),
                         condition: data.condition,
                         phone: data.phone,
                         location: data.location,
@@ -132,6 +132,20 @@ const AddProduct = () => {
                     })} />
                     {errors.category && <p className='text-red-600'>{errors.category.message}</p>}
                 </div>
+
+                {/* <div className="form-control w-full max-w-xs">
+                    <label className="label"><span className="label-text">Product Category_ID</span></label>
+                    <select className="select select-bordered w-full max-w-xs" {...register("category", {
+                        required: "Category_Id is required"
+                    })} >
+                        <option></option>
+                        <option selected>01</option>
+                        <option>02</option>
+                        <option>03</option>
+                    </select>
+                </div> */}
+
+
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label"><span className="label-text">Product Detail</span></label>

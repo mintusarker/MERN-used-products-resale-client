@@ -1,19 +1,24 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import useToken from '../../Hooks/useToken';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, providerLogin, updateUser } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+
     const [signUpError, setSignUpError] = useState('');
 
     const [userEmail, setUserEmail] = useState('');
     const [token] = useToken(userEmail);
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     if (token) {
         navigate('/')
@@ -45,11 +50,26 @@ const SignUp = () => {
             });
     }
 
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user
+                // console.log(user)
+                const name = user.displayName;
+                const email = user.email
+                const option = "Buyers Account"
+                saveUser(name, email, option)
+                navigate(from, { replace: true });
+            })
+            .catch(error => console.error(error));
+    };
+
     // save user information
     const saveUser = (name, email, option) => {
         const user = { name, email, option };
         fetch('https://used-products-resale-server-alpha.vercel.app/users', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
@@ -63,10 +83,9 @@ const SignUp = () => {
             })
     }
 
-
     return (
-        <div className='h-[600px] flex justify-center items-center'>
-            <div className='w-96 p-7 shadow-2xl'>
+        <div className='h-[800px] flex justify-center items-center'>
+            <div className='w-96 p-7 shadow-xl shadow-slate-50'>
                 <h2 className='text-xl text-center'>Sign Up</h2>
 
                 <form onSubmit={handleSubmit(handleSignUp)}>
@@ -104,11 +123,15 @@ const SignUp = () => {
                         </select>
                     </div>
 
-
                     <input className='btn btn-accent my-3 w-full max-w-xs' value='Sign Up' type="submit" />
                     {signUpError && <p className='text-red-600'>{signUpError}</p>}
                 </form>
-                <p>Already have an account. Please <Link to='/login' className='text-secondary'>Login</Link> </p>
+                <p>Already have an account ! Please <Link to='/login' className='text-secondary font-bold'>Login</Link> </p>
+                <div className="divider">OR</div>
+                <button onClick={handleGoogleSignIn} className='btn btn-outline w-full max-w-xs'>CONTINUE WITH GOOGLE</button>
+                <br />
+                <br />
+
             </div>
         </div>
     );

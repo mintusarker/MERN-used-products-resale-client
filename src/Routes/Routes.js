@@ -14,6 +14,7 @@ import DisplayError from "../Pages/SharePage/DisplayError/DisplayError";
 import SignUp from "../Pages/SignUp/SignUp";
 import AllBuyers from "../Pages/Users/AllBuyers";
 import AllSellers from "../Pages/Users/AllSellers";
+import AllUsers from "../Pages/Users/AllUsers";
 import AdminRoute from "./AdminRoute";
 import BuyersRoute from "./BuyersRoute";
 import PrivateRoute from "./PrivateRoute";
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/myproduct',
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+            {
+                path: '/dashboard/allusers',
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
             {
                 path: '/dashboard/allsellers',

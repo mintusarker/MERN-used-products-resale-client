@@ -49,13 +49,12 @@ const Login = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user
-                console.log(user)
-                if (user) {
-                    const user = result.user
-                    console.log(user)
-                    saveUser(user.displayName, user.email, 'Buyers Account')
-                    navigate(from, { replace: true });
-                }
+                // console.log(user)
+                const name = user.displayName;
+                const email = user.email
+                const option = "Buyers Account"
+                saveUser(name, email, option)
+                navigate(from, { replace: true });
             })
             .catch(error => console.error(error));
     };
@@ -63,9 +62,9 @@ const Login = () => {
 
     // save user information
     const saveUser = (name, email, option) => {
-        const user = { name, email, option: 'Buyers Account' };
+        const user = { name, email, option };
         fetch('https://used-products-resale-server-alpha.vercel.app/users', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
@@ -81,7 +80,7 @@ const Login = () => {
 
     return (
         <div className='h-[600px] flex justify-center items-center'>
-            <div className='w-96 p-7 shadow-2xl'>
+            <div className='w-96 p-7 shadow-2xl shadow-slate-50'>
                 <h2 className='text-xl font-semibold text-center'>Login</h2>
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div className="form-control w-full max-w-xs">
@@ -102,7 +101,7 @@ const Login = () => {
 
                                 })} />
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
-                        <label className="label"><span className="label-text">Forget Password?</span></label>
+                        {/* <label className="label"><span className="label-text">Forget Password?</span></label> */}
 
                     </div>
                     <input className='btn btn-accent my-3 w-full max-w-xs' value='Login' type="submit" />
