@@ -13,7 +13,7 @@ const ReportModal = ({ items, setItems }) => {
         const message = form.message.value;
 
         const report = {
-            image: items?.image_url,
+            image: items?.image,
             itemName: item,
             email,
             message
@@ -25,7 +25,7 @@ const ReportModal = ({ items, setItems }) => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ ...report, image: items?.image_url })
+            body: JSON.stringify({ ...report, image: items?.image })
         })
             .then(res => res.json())
             .then(data => {
@@ -43,7 +43,7 @@ const ReportModal = ({ items, setItems }) => {
                     <label htmlFor="report-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h2 className='text-center text-2xl text-red-500'>Report to Admin</h2>
                     <form onSubmit={handleReport} className='grid gap-3 mt-4 grid-cols-1'>
-                        <img className='h-14 w-14' name='image' src={items?.image_url} alt="" />
+                        <img className='h-14 w-14' name='image' src={items?.image} alt="" />
                         <input name='item' type="text" defaultValue={items?.name} disabled className="input input-bordered w-full" />
                         <input name='email' type="email" defaultValue={user?.email} disabled placeholder="Email Address" className="input input-bordered w-full" />
                         <div className='w-full mx-auto grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1'>

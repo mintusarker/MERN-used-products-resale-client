@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 
 const Products = ({ product, handleDeleteProduct }) => {
 
-    const { image, price, name, detail, location, condition, phone, time } = product;
+    const { image, price, name, detail, location, condition, phone, use } = product;
 
 
     const handleAdvertise = () => {
@@ -14,11 +14,13 @@ const Products = ({ product, handleDeleteProduct }) => {
             name,
             price: product?.price,
             detail,
-            time,
+            use,
             condition,
             location,
             phone,
         };
+
+        console.log(advertise);
 
         fetch('https://used-products-resale-server-alpha.vercel.app/advertise', {
             method: 'POST',
@@ -42,7 +44,7 @@ const Products = ({ product, handleDeleteProduct }) => {
                     <h2 className="card-title">{name}</h2>
                     <p>Price: {price}</p>
                     <p>Description: {detail}</p>
-                    <p>Used: {time}</p>
+                    <p>Used: {use}</p>
                     <p>Condition: {condition}</p>
                     <p>Location: {location}</p>
                     <p>Contact: {phone}</p>

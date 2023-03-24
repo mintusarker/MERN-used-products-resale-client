@@ -34,6 +34,7 @@ const DashboardLayout = () => {
                             isSeller && <>
                                 <li className='badge-primary'><Link to='/dashboard/addproduct'>Add A Product</Link></li>
                                 <li className='badge-primary my-5'><Link to='/dashboard/myproduct'>My Products</Link></li>
+                                <li className='badge-primary'><Link to='/dashboard/advertise'>Advertise Item</Link></li>
                             </>
                         }
 

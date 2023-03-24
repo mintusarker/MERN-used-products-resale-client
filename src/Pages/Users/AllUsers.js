@@ -69,8 +69,9 @@ const AllUsers = () => {
                                 <td>{user?.name}</td>
                                 <td>{user?.email}</td>
                                 <td>{user?.option}</td>
-                                <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user?._id)} className='btn btn-sm btn-primary'>Make Admin</button>}</td>
-                                <td><button onClick={() => handleDeleteProduct(user?._id)} className='btn btn-sm btn-warning'>Delete</button></td>
+                                <td>{user?.role !== 'admin' ? <button onClick={() => handleMakeAdmin(user?._id)} className='btn btn-sm btn-primary'>Make Admin</button> : <p className='btn btn-sm btn-success'>Admin</p>}</td>
+                                <td>
+                                    {user?.role !== 'admin' && <button onClick={() => handleDeleteProduct(user?._id)} className='btn btn-sm btn-warning'>Delete</button>}</td>
                             </tr>)
                         }
                     </tbody>

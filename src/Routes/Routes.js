@@ -6,6 +6,7 @@ import CategoryDetail from "../Pages/Category/CategoryDetail";
 import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
 import MyProducts from "../Pages/Dashboard/MyProducts/MyProducts";
 import MyOrders from "../Pages/Dashboard/Orders/MyOrders";
+import Advertise from "../Pages/HomePage/Advertise/Advertise";
 import Home from "../Pages/HomePage/Home/Home";
 import Login from "../Pages/Login/Login";
 import Payment from "../Pages/Payment/Payment";
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/itemName/:id',
-                element: <PrivateRoute><CategoryDetail></CategoryDetail></PrivateRoute>,
+                element: <CategoryDetail></CategoryDetail>,
                 loader: ({ params }) => fetch(`https://used-products-resale-server-alpha.vercel.app/itemName/${params.id}`)
             }
         ]
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/myproduct',
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+            {
+                path: '/dashboard/advertise',
+                element: <SellerRoute><Advertise></Advertise></SellerRoute>
             },
             {
                 path: '/dashboard/allusers',

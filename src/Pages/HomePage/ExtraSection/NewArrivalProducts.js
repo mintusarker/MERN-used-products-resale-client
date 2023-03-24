@@ -11,7 +11,7 @@ const NewArrivalProducts = ({ item }) => {
                     <p>Version : {version}</p>
                     <p>Price : {price}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Coming Soon</button>
+                        <button className="btn btn-sm btn-primary">Coming Soon</button>
                     </div>
                 </div>
             </div>

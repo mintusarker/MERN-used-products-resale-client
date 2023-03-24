@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Loading from '../../Loading/Loading';
 
 const AddProduct = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const imageHostKey = process.env.REACT_APP_imgbb_key;
 
@@ -39,18 +39,22 @@ const AddProduct = () => {
                     console.log(imgData.data.url);
                     const product = {
                         name: data.name,
+                        category_id: data.category,
                         price: parseInt(data.price),
-                        condition: data.condition,
+                        resell_price: parseInt(data.resell_price),
+                        // condition: data.condition,
                         phone: data.phone,
                         location: data.location,
-                        category: data.category,
                         detail: data.detail,
-                        time: data.time,
-                        image: imgData.data.url
+                        date: data.time,
+                        use: data.used,
+                        image: imgData.data.url,
+                        seller: data.seller
                     }
+                    console.log(product)
 
                     // save product information to database
-                    fetch('https://used-products-resale-server-alpha.vercel.app/products', {
+                    fetch('https://used-products-resale-server-alpha.vercel.app/itemName', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -60,22 +64,24 @@ const AddProduct = () => {
                         .then(res => res.json())
                         .then(result => {
                             console.log(result);
+
                             toast.success('Product added successfully');
-                            navigate('/dashboard/myproduct');
+                            reset();
+                            // navigate('/dashboard/myproduct');
                         })
 
                 }
             })
     };
 
-    if (isLoading) {
-        return <Loading></Loading>
-    }
+    // if (isLoading) {
+    //     return <Loading></Loading>
+    // }
 
 
     return (
-        <div className='mt-10 px-40'>
-            <h2 className='text-2xl'>Add A Product</h2>
+        <div className='px-40'>
+            <h2 className='text-2xl mb-6'>Add A Product</h2>
 
             <form className='grid lg:grid-cols-2' onSubmit={handleSubmit(handleAddProduct)}>
 
@@ -88,6 +94,30 @@ const AddProduct = () => {
                         <option selected>Hp</option>
                         <option>Asus</option>
                         <option>Lenovo</option>
+                        <option>MSI</option>
+                        <option>Acer</option>
+                        <option>Apple</option>
+                        <option>Dell</option>
+                        <option>Microsoft</option>
+                        <option>Avita</option>
+                    </select>
+                </div>
+
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"><span className="label-text">Product Category_ID</span></label>
+                    <select className="select select-bordered w-full max-w-xs" {...register("category", {
+                        required: "Category_Id is required"
+                    })} >
+                        <option></option>
+                        <option selected>01</option>
+                        <option>02</option>
+                        <option>03</option>
+                        <option>04</option>
+                        <option>05</option>
+                        <option>06</option>
+                        <option>07</option>
+                        <option>08</option>
+                        <option>09</option>
                     </select>
                 </div>
 
@@ -100,14 +130,20 @@ const AddProduct = () => {
                 </div>
 
                 <div className="form-control w-full max-w-xs">
+                    <label className="label"><span className="label-text">Resell_Price</span></label>
+                    <input type="text" className="input input-bordered w-full max-w-xs" {...register("resell_price", {
+                        required: "Resell_Price is required"
+                    })} />
+                    {errors.resell_price && <p className='text-red-600'>{errors.resell_price.message}</p>}
+                </div>
+
+                {/* <div className="form-control w-full max-w-xs">
                     <label className="label"><span className="label-text">Condition</span></label>
                     <input type="text" className="input input-bordered w-full max-w-xs" {...register("condition", {
                         required: "Condition is required"
                     })} />
                     {errors.condition && <p className='text-red-600'>{errors.condition.message}</p>}
-                </div>
-
-
+                </div> */}
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label"><span className="label-text">Phone Number</span></label>
@@ -126,25 +162,12 @@ const AddProduct = () => {
                 </div>
 
                 <div className="form-control w-full max-w-xs">
-                    <label className="label"><span className="label-text">Product Category</span></label>
-                    <input type="text" className="input input-bordered w-full max-w-xs" {...register("category", {
-                        required: "Category is required"
+                    <label className="label"><span className="label-text">Product used time</span></label>
+                    <input type="text" className="input input-bordered w-full max-w-xs" {...register("used", {
+                        required: "Used time is required"
                     })} />
-                    {errors.category && <p className='text-red-600'>{errors.category.message}</p>}
+                    {errors.used && <p className='text-red-600'>{errors.used.message}</p>}
                 </div>
-
-                {/* <div className="form-control w-full max-w-xs">
-                    <label className="label"><span className="label-text">Product Category_ID</span></label>
-                    <select className="select select-bordered w-full max-w-xs" {...register("category", {
-                        required: "Category_Id is required"
-                    })} >
-                        <option></option>
-                        <option selected>01</option>
-                        <option>02</option>
-                        <option>03</option>
-                    </select>
-                </div> */}
-
 
 
                 <div className="form-control w-full max-w-xs">
@@ -156,7 +179,7 @@ const AddProduct = () => {
                 </div>
 
                 <div className="form-control w-full max-w-xs">
-                    <label className="label"><span className="label-text">Year of Purchase</span></label>
+                    <label className="label"><span className="label-text">Posted time</span></label>
                     <input type="text" className="input input-bordered w-full max-w-xs" {...register("time", {
                         required: "Time is required"
                     })} />
@@ -170,6 +193,15 @@ const AddProduct = () => {
                         required: "Photo is required"
                     })} />
                     {errors.image && <p className='text-red-600'>{errors.image.message}</p>}
+                </div>
+
+
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"><span className="label-text">Seller Name</span></label>
+                    <input type="text" className="input input-bordered w-full max-w-xs" {...register("seller", {
+                        required: "Name is required"
+                    })} />
+                    {errors.seller && <p className='text-red-600'>{errors.seller.message}</p>}
                 </div>
 
                 <input className='btn btn-accent my-3 w-full max-w-xs' value='Add Product' type="submit" />

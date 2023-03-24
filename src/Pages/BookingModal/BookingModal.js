@@ -17,7 +17,7 @@ const BookingModal = ({ items, setItems }) => {
         const location = form.location.value;
 
         const booking = {
-            image: items?.image_url,
+            image: items?.image,
             price: price,
             itemName: item,
             userName: name,
@@ -32,7 +32,7 @@ const BookingModal = ({ items, setItems }) => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ ...booking, image: items?.image_url })
+            body: JSON.stringify({ ...booking, image: items?.image })
         })
             .then(res => res.json())
             .then(data => {
@@ -51,7 +51,7 @@ const BookingModal = ({ items, setItems }) => {
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-lg font-semibold">Laptop Name : {items?.name}</h3>
                     <form onSubmit={handleBooking} className='grid gap-3 mt-4 grid-cols-1'>
-                        <img className='h-14 w-14' name='image' src={items?.image_url} alt="" />
+                        <img className='h-14 w-14' name='image' src={items?.image} alt="" />
                         <input name='item' type="text" defaultValue={items?.name} disabled className="input input-bordered w-full" />
                         <input name='price' type="text" defaultValue={items?.resell_price} disabled className="input input-bordered w-full" />
                         <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input input-bordered w-full" />

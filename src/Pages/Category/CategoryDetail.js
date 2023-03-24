@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 import BookingModal from '../BookingModal/BookingModal';
 import ReportModal from '../ReportToAdmin/ReportModal';
-import Category from './Category';
 import ItemCategory from './ItemCategory';
 
 const CategoryDetail = () => {
@@ -13,8 +13,8 @@ const CategoryDetail = () => {
 
     return (
         <div>
-            <h2 className='text-xl pl-14 my-10 text-center'>Details</h2>
-            <div className='gap-10 px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:px-44'>
+            <h2 className='text-3xl pl-14 my-10'>{products.length? "That Items are available" : <p className='py-12 mb-60'>No Item are Available right now, Coming Soon....</p>}</h2>
+            <div className='gap-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                     products?.map(product => <ItemCategory
                         key={product?._id}
@@ -26,8 +26,7 @@ const CategoryDetail = () => {
             </div>
 
             {
-                items &&
-                <BookingModal
+                items && <BookingModal
                     items={items}
                     setItems={setItems}
                 >
@@ -41,6 +40,7 @@ const CategoryDetail = () => {
                 >
                 </ReportModal>
             }
+
         </div>
     );
 };
