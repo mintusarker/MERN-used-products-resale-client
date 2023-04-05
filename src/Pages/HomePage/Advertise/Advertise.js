@@ -10,14 +10,15 @@ const Advertise = () => {
     const { data: advertised = [], isLoading, refetch } = useQuery({
         queryKey: ['advertise'],
         queryFn: async () => {
-            const res = await fetch('https://used-products-resale-server-alpha.vercel.app/advertise');
+            const res = await fetch(`http://localhost:5000/advertised?email=${user?.email}`);
             const data = await res.json();
+            console.log(data);
             return data
         }
     })
 
     const handleDeleteProduct = id => {
-        fetch(`https://used-products-resale-server-alpha.vercel.app/advertise/${id}`, {
+        fetch(`http://localhost:5000/advertise/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -32,7 +33,6 @@ const Advertise = () => {
 
     return (
         <div className='my-10 px-10'>
-            {/* <h2 className='text-2xl mb-10 text-blue-500 text-center'>Advertisement product</h2> */}
             <div className='gap-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                 {
                     advertised.map(advertise => <div className="card border-2 border-teal-600 p-5 shadow-md shadow-slate-100">

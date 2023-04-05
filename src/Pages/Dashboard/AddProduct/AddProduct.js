@@ -1,21 +1,21 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider';
 import Loading from '../../Loading/Loading';
 
 const AddProduct = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-
     const imageHostKey = process.env.REACT_APP_imgbb_key;
-
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const { data: category, isLoading } = useQuery({
         queryKey: ['itemName'],
         queryFn: async () => {
-            const res = await fetch('https://used-products-resale-server-alpha.vercel.app/itemCategory');
+            const res = await fetch('http://localhost:5000/itemCategory');
             const data = await res.json();
             return data;
         },
@@ -49,12 +49,13 @@ const AddProduct = () => {
                         date: data.time,
                         use: data.used,
                         image: imgData.data.url,
-                        seller: data.seller
+                        seller: data.seller,
+                        email: data.email,
                     }
                     console.log(product)
 
                     // save product information to database
-                    fetch('https://used-products-resale-server-alpha.vercel.app/itemName', {
+                    fetch('http://localhost:5000/itemName', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -67,7 +68,7 @@ const AddProduct = () => {
 
                             toast.success('Product added successfully');
                             reset();
-                            // navigate('/dashboard/myproduct');
+                            navigate('/dashboard/myproduct');
                         })
 
                 }
@@ -84,6 +85,19 @@ const AddProduct = () => {
             <h2 className='text-2xl mb-6'>Add A Product</h2>
 
             <form className='grid lg:grid-cols-2' onSubmit={handleSubmit(handleAddProduct)}>
+
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"><span className="label-text">Seller Email</span></label>
+                    <input type="text" defaultValue={user?.email} readOnly className="input input-bordered w-full max-w-xs" {...register("email")} />
+                </div>
+
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"><span className="label-text">Seller Name</span></label>
+                    <input type="text" className="input input-bordered w-full max-w-xs" {...register("seller", {
+                        required: "Name is required"
+                    })} />
+                    {errors.seller && <p className='text-red-600'>{errors.seller.message}</p>}
+                </div>
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label"><span className="label-text">Product Name</span></label>
@@ -195,14 +209,6 @@ const AddProduct = () => {
                     {errors.image && <p className='text-red-600'>{errors.image.message}</p>}
                 </div>
 
-
-                <div className="form-control w-full max-w-xs">
-                    <label className="label"><span className="label-text">Seller Name</span></label>
-                    <input type="text" className="input input-bordered w-full max-w-xs" {...register("seller", {
-                        required: "Name is required"
-                    })} />
-                    {errors.seller && <p className='text-red-600'>{errors.seller.message}</p>}
-                </div>
 
                 <input className='btn btn-accent my-3 w-full max-w-xs' value='Add Product' type="submit" />
             </form>

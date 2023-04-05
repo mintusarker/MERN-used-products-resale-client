@@ -1,17 +1,16 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
-import PrivateRoute from '../../Routes/PrivateRoute';
-import SignUp from '../SignUp/SignUp';
+
 
 const ItemCategory = ({ product, setItems }) => {
 
     const { user } = useContext(AuthContext)
 
-    const { resell_price, price, location, use, name, date, detail, _id, image, seller } = product;
+    const { resell_price, price, location, use, name, date, detail, _id, image,phone, seller } = product;
     return (
         <div>
-            <div className="card card-compact bg-base-100 my-10 shadow shadow-slate-400">
+            <div className="card card-compact bg-base-100 shadow shadow-slate-400">
                 <figure><img className='h-60 w-72 mt-5' src={image} alt="" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">Brand: {name}</h2>
@@ -22,6 +21,7 @@ const ItemCategory = ({ product, setItems }) => {
                     <p>Location : {location}</p>
                     <p>Posted time : {date}</p>
                     <p className='text-blue-600'>Seller Name : {seller}</p>
+                    <p className='text-blue-600'>Contact : {phone}</p>
                     <div className="card-actions justify-between">
                         {user ? <label
                             htmlFor="booking-modal"

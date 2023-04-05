@@ -1,10 +1,13 @@
 import React from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 
 const Products = ({ product, handleDeleteProduct }) => {
 
-    const { image, price, name, detail, location, condition, phone, use } = product;
+    const navigate = useNavigate();
+    const { image, price, name, detail, location, email, phone, use } = product;
+    console.log(product);
 
 
     const handleAdvertise = () => {
@@ -15,26 +18,26 @@ const Products = ({ product, handleDeleteProduct }) => {
             price: product?.price,
             detail,
             use,
-            condition,
             location,
             phone,
+            email
         };
 
         console.log(advertise);
 
-        fetch('https://used-products-resale-server-alpha.vercel.app/advertise', {
+        fetch('http://localhost:5000/advertise', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({...advertise, price: parseInt(price)})
+            body: JSON.stringify({ ...advertise, price: parseInt(price) })
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
                 toast.success('Advertisement product added successfully');
+                navigate('/dashboard/advertise')
             })
-        console.log(advertise)
     }
     return (
         <div>
@@ -45,7 +48,7 @@ const Products = ({ product, handleDeleteProduct }) => {
                     <p>Price: {price}</p>
                     <p>Description: {detail}</p>
                     <p>Used: {use}</p>
-                    <p>Condition: {condition}</p>
+                    {/* <p>Condition: {condition}</p> */}
                     <p>Location: {location}</p>
                     <p>Contact: {phone}</p>
                     <div className="card-actions inline-grid">

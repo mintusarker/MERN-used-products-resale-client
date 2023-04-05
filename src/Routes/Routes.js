@@ -47,7 +47,7 @@ const router = createBrowserRouter([
             {
                 path: '/itemName/:id',
                 element: <CategoryDetail></CategoryDetail>,
-                loader: ({ params }) => fetch(`https://used-products-resale-server-alpha.vercel.app/itemName/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/itemName/${params.id}`)
             }
         ]
     },
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`https://used-products-resale-server-alpha.vercel.app/bookings/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
             },
             {
                 path: '/dashboard/addproduct',

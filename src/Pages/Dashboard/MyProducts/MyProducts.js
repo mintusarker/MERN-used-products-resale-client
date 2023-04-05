@@ -1,21 +1,26 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../../Context/AuthProvider';
 import Loading from '../../Loading/Loading';
 import Products from './Products';
 
 const MyProducts = () => {
 
+  const { user } = useContext(AuthContext);
+ 
+
   const { data: products, isLoading, refetch } = useQuery({
     queryKey: ['products'],
     queryFn: async () => {
       try {
-        const res = await fetch('https://used-products-resale-server-alpha.vercel.app/itemName');
+        const res = await fetch(`http://localhost:5000/itemName?email=${user?.email}`);
         const data = await res.json();
+        // console.log(data);
         return data;
       }
       catch (error) {
-
+        
       }
     }
   });
@@ -27,7 +32,7 @@ const MyProducts = () => {
 
 
   const handleDeleteProduct = id => {
-    fetch(`https://used-products-resale-server-alpha.vercel.app/itemName/${id}`, {
+    fetch(`http://localhost:5000/itemName/${id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())
@@ -49,7 +54,7 @@ const MyProducts = () => {
 
 
         {
-          products.map(product => <Products
+          products?.map(product => <Products
             key={product._id}
             product={product}
             handleDeleteProduct={handleDeleteProduct}

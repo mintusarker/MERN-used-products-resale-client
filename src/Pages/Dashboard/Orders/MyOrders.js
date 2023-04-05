@@ -15,7 +15,7 @@ const MyOrders = () => {
     const { data: bookings = [], refetch } = useQuery({
         queryKey: ['bookings'],
         queryFn: async () => {
-            const res = await fetch(`https://used-products-resale-server-alpha.vercel.app/bookings?email=${user?.email}`);
+            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`);
             const data = await res.json();
             return data;
         }
@@ -24,7 +24,7 @@ const MyOrders = () => {
 
 
     // useEffect(() => {
-    //     fetch(`https://used-products-resale-server-alpha.vercel.app/bookings?email=${user?.email}`, {
+    //     fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
     //         // headers: {
     //         //     authorization: `bearer ${localStorage.getItem('accessToken')}`
     //         // }
@@ -35,7 +35,7 @@ const MyOrders = () => {
 
 
     const handleRemove = id => {
-        fetch(`https://used-products-resale-server-alpha.vercel.app/bookings/${id}`, {
+        fetch(`http://localhost:5000/bookings/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -77,7 +77,7 @@ const MyOrders = () => {
                                         </div>
                                     </th>
                                     <td>{booking?.itemName}</td>
-                                    <td>{booking?.price}</td>
+                                    <td>Tk. {booking?.price}</td>
                                     <td>
                                         {
                                             booking?.price && !booking.paid &&
@@ -88,7 +88,7 @@ const MyOrders = () => {
                                         }
 
                                     </td>
-                                    <td>{!booking?.paid? <button onClick={() => handleRemove(booking?._id)} className='btn btn-primary btn-sm'>Remove</button> : <p className='text-success'>Ordered confirmed</p>}</td>
+                                    <td>{!booking?.paid ? <button onClick={() => handleRemove(booking?._id)} className='btn btn-primary btn-sm'>Remove</button> : <p className='text-success'>Ordered confirmed</p>}</td>
                                 </tr>)
                         }
 

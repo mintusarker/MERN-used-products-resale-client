@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
+import logo from '../../../assets/logo.png'
 
 const Navbar = () => {
 
@@ -31,7 +32,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="navbar bg-base-100 mt-4 flex justify-between">
+        <div className="navbar bg-base-100 mt-4 lg:px-10 flex justify-between">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -41,7 +42,8 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <a href='/' className="btn btn-ghost  text-blue-700 normal-case text-2xl">Resell Market</a>
+                <img className='w-24 h-8' src={logo} alt="" /> <p className='text-blue-700 pl-2 text-2xl'>Market</p>
+                {/* <a href='/' className="btn btn-ghost  text-blue-700 normal-case text-2xl">Resell Market</a> */}
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

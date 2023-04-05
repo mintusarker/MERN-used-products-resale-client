@@ -9,17 +9,17 @@ const AllSellers = () => {
     const { data: sellers = [], isLoading, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('https://used-products-resale-server-alpha.vercel.app/user/sellers')
+            const res = await fetch('http://localhost:5000/user/sellers')
             const data = await res.json();
             return data;
         }
     });
 
     const handleDeleteSellers = id => {
-        fetch(`https://used-products-resale-server-alpha.vercel.app/user/sellers/${id}`, {
+        fetch(`http://localhost:5000/user/sellers/${id}`, {
             method: 'DELETE',
             headers: {
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                'content-type': 'application/json',
             }
         })
             .then(res => res.json())
@@ -33,12 +33,10 @@ const AllSellers = () => {
     };
 
     const handleStatusUpdate = id => {
-        fetch(`https://used-products-resale-server-alpha.vercel.app/user/sellers/${id}`, {
+        fetch(`http://localhost:5000/user/sellers/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('genius-token')}`
-
             },
             body: JSON.stringify({ status: 'Verified' })
         })

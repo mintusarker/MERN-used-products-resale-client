@@ -20,7 +20,7 @@ const ReportModal = ({ items, setItems }) => {
         }
         console.log(report)
 
-        fetch('https://used-products-resale-server-alpha.vercel.app/report', {
+        fetch('http://localhost:5000/report', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
