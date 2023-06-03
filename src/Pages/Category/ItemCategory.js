@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import Loading from '../Loading/Loading';
 
 
 const ItemCategory = ({ product, setItems }) => {
-
     const { user } = useContext(AuthContext)
+    const { resell_price, price, location, use, name, date, detail, _id, image, phone, seller } = product;
 
-    const { resell_price, price, location, use, name, date, detail, _id, image,phone, seller } = product;
     return (
         <div>
             <div className="card card-compact bg-base-100 shadow shadow-slate-400">
@@ -28,7 +28,7 @@ const ItemCategory = ({ product, setItems }) => {
                             onClick={() => setItems(product)}
                             className="btn btn-primary text-white">
                             Book Now
-                        </label> :<Link to='/login'><button className="btn btn-secondary mt-4 text-white">Book Now</button></Link> }
+                        </label> : <Link to='/login'><button className="btn btn-secondary mt-4 text-white">Book Now</button></Link>}
 
                         {user ? <label
                             htmlFor="report-modal"

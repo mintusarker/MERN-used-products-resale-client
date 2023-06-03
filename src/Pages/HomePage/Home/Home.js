@@ -9,16 +9,20 @@ import Contact from '../extra/Contact';
 import About from '../extra/About';
 import Review from '../extra/Review';
 import Services from '../extra/Services';
+import RunningOffer from '../extra/RunningOffer';
+import UpCategory from '../extra/UpCategory';
 
 const Home = () => {
     return (
         <div>
+           <UpCategory></UpCategory>
            <Banner></Banner>
            <ItemAdvertise></ItemAdvertise>
            <Category></Category>
            <NewArrival></NewArrival>
-           <Review></Review>
+           <RunningOffer></RunningOffer>
            <Services></Services>
+           <Review></Review>
            <About></About>
            <Contact></Contact>
         </div>

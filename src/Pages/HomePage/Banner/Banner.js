@@ -10,7 +10,7 @@ const Banner = () => {
                     <h1 className="text-3xl font-bold">All Kind of Laptop Available Here</h1>
                     <p className="py-6">All kind of used personal device are available here that you want , <br /> may be you find here as your choose.</p>
                 </div>
-                <img style={{width:'900px', height: '400px'}} src={bannerpic} alt='' className="lg:w-1/2 rounded-lg shadow-2xl" />
+                <img style={{ width: '900px', height: '350px' }} src={bannerpic} alt='' className="lg:w-1/2 rounded-lg shadow-2xl" />
             </div>
         </div>
     );

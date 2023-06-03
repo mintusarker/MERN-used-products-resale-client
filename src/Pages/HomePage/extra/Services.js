@@ -32,7 +32,7 @@ const Services = () => {
                 {opinion.length &&
                     opinion.map(opi => <div className='border shadow-md shadow-slate-400 p-2 rounded-lg' key={opi?.id}>
                         <p className='text-2xl font-semibold text-center'>{opi?.review}</p>
-                        <p style={{ lineHeight: '70px' }} className='text-center border-2 m-3 border-green-700 w-20 h-20 mx-auto rounded-full font-medium'>{opi?.name}</p>
+                        <p style={{ lineHeight: '75px' }} className='text-center border-2 m-3 border-green-700 w-20 h-20 mx-auto rounded-full font-medium'>{opi?.name}</p>
 
                     </div>)
                 }

@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import Loading from '../Loading/Loading';
 
+
 const Category = () => {
 
     const { loading } = useContext(AuthContext)
-
     const [categories, setCategories] = useState([]);
 
 
@@ -17,6 +17,8 @@ const Category = () => {
             .then(data => setCategories(data.data))
     }, []);
 
+
+   
 
     if (loading) {
         return <Loading></Loading>
@@ -28,7 +30,7 @@ const Category = () => {
             <div className='gap-10 px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                     categories?.map(category => <div key={category.id}>
-                        <div className="card h-40 hover:scale-x-95 duration-500  shadow shadow-slate-100">
+                        <div className="card lg:h-40 md:h-40 sm:h-auto hover:scale-x-95 duration-500  shadow shadow-slate-100">
                             <div className="card-body">
                                 <h2 className="card-title">{category?.name}</h2>
                                 <p>Click bellow Category button for different Item </p>

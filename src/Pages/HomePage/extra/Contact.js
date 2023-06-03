@@ -24,7 +24,8 @@ const Contact = () => {
                     </div>
                     <div>
                         <p className='text-lg'>Current Location</p>
-                        <span className='text-amber-800'>Dhaka, Bangladesh</span>                           <p>We provide our service worldwide</p>
+                        <span className='text-amber-800'>Dhaka, Bangladesh</span>
+                        {/* <p>We provide our service worldwide</p> */}
                     </div>
                 </div>
 
@@ -35,7 +36,7 @@ const Contact = () => {
 
                         <textarea name="message" rows="10" placeholder='Enter your message' className='p-2 h-28  border-2  border-black  rounded-md focus:outline-none' required></textarea>
 
-                        <button className='text-white bg-gradient-to-r from-red-500 to-green-500 mt-6 px-6 py-3 mx-auto flex items-center rounded-md hover:scale-105 duration-300'>Let's talk</button>
+                        <button className='text-white bg-gradient-to-r from-red-500 to-gray-500 mt-6 px-6 py-3 mx-auto flex items-center rounded-md hover:scale-105 duration-300'>Let's talk</button>
                     </form>
                 </div>
             </div>

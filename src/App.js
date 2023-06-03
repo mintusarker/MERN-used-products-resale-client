@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
         <RouterProvider router={router}></RouterProvider>
-        <Toaster></Toaster>
+        <Toaster position='bottom-right'></Toaster>
     </div>
   );
 }
