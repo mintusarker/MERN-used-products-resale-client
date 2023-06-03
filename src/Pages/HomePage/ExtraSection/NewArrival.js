@@ -41,7 +41,7 @@ const NewArrival = () => {
     return (
         <div>
             <h2 className='text-2xl text-center mt-10 text-blue-500'>New some upcoming  products are bellow</h2>
-            <div className='gap-6 my-10 px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
+            <div className='gap-6 my-10 px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                 {
                     newItem.map(item => <NewArrivalProducts
                         key={item.id}

@@ -10,7 +10,7 @@ const Advertise = () => {
     const { data: advertised = [], isLoading, refetch } = useQuery({
         queryKey: ['advertise'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/advertised?email=${user?.email}`);
+            const res = await fetch(`https://used-products-resale-server-alpha.vercel.app/advertised?email=${user?.email}`);
             const data = await res.json();
             console.log(data);
             return data
@@ -18,7 +18,7 @@ const Advertise = () => {
     })
 
     const handleDeleteProduct = id => {
-        fetch(`http://localhost:5000/advertise/${id}`, {
+        fetch(`https://used-products-resale-server-alpha.vercel.app/advertise/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

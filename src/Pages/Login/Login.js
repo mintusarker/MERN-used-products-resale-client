@@ -63,7 +63,7 @@ const Login = () => {
     // save user information
     const saveUser = (name, email, option) => {
         const user = { name, email, option };
-        fetch('http://localhost:5000/users', {
+        fetch('https://used-products-resale-server-alpha.vercel.app/users', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -109,7 +109,7 @@ const Login = () => {
                         {loginError && <p className='text-red-600'>{loginError}</p>}
                     </div>
                 </form>
-                <p>New to Doctors Portal?  <Link to='/signup' className='text-secondary'>Create new account</Link> </p>
+                <p>New to here!  <Link to='/signup' className='text-secondary'>Create new account</Link> </p>
                 <div className="divider">OR</div>
                 <button onClick={handleGoogleSignIn} className='btn btn-outline w-full max-w-xs'>CONTINUE WITH GOOGLE</button>
             </div>

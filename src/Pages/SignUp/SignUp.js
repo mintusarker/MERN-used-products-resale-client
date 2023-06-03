@@ -68,7 +68,7 @@ const SignUp = () => {
     // save user information
     const saveUser = (name, email, option) => {
         const user = { name, email, option };
-        fetch('http://localhost:5000/users', {
+        fetch('https://used-products-resale-server-alpha.vercel.app/users', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

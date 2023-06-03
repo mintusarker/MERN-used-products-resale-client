@@ -15,7 +15,7 @@ const MyOrders = () => {
     const { data: bookings = [], refetch } = useQuery({
         queryKey: ['bookings'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`);
+            const res = await fetch(`https://used-products-resale-server-alpha.vercel.app/bookings?email=${user?.email}`);
             const data = await res.json();
             return data;
         }
@@ -24,7 +24,7 @@ const MyOrders = () => {
 
 
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+    //     fetch(`https://used-products-resale-server-alpha.vercel.app/bookings?email=${user?.email}`, {
     //         // headers: {
     //         //     authorization: `bearer ${localStorage.getItem('accessToken')}`
     //         // }
@@ -35,7 +35,7 @@ const MyOrders = () => {
 
 
     const handleRemove = id => {
-        fetch(`http://localhost:5000/bookings/${id}`, {
+        fetch(`https://used-products-resale-server-alpha.vercel.app/bookings/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

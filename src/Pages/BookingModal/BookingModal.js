@@ -27,7 +27,7 @@ const BookingModal = ({ items, setItems }) => {
         }
         console.log(booking)
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://used-products-resale-server-alpha.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

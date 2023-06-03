@@ -10,14 +10,14 @@ const ItemAdvertise = () => {
     const { data: advertised = [], isLoading, refetch } = useQuery({
         queryKey: ['advertise'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/advertise');
+            const res = await fetch('https://used-products-resale-server-alpha.vercel.app/advertise');
             const data = await res.json();
             return data
         }
     })
 
     // const handleDeleteProduct = id => {
-    //     fetch(https:http://localhost:5000/advertise/${id}`, {
+    //     fetch(https:https://used-products-resale-server-alpha.vercel.app/advertise/${id}`, {
     //         method: 'DELETE'
     //     })
     //         .then(res => res.json())
@@ -31,13 +31,13 @@ const ItemAdvertise = () => {
     // };
 
     return (
-        <div className='my-10 px-10'>
+        <div className='my-10 px-16'>
             <h2 className='text-2xl mb-10 text-blue-500 text-center'>Advertisement product</h2>
             <div className='gap-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                 {
-                    advertised.map(advertise => <div className="card border-2 border-teal-600 p-5 shadow-md shadow-slate-100">
+                    advertised.map(advertise => <div className="card p-5 rounded-none shadow-md shadow-slate-100">
                         <figure><img className='h-40 w-60' src={advertise?.image} alt="Shoes" /></figure>
-                        <div className="card-body">
+                        <div className="card-body h-44">
                             <h2 className="card-title">{advertise?.name}</h2>
                             <p>Description: {advertise?.detail}</p>
                             <p>Price: {advertise?.price} Tk.</p>

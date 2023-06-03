@@ -13,7 +13,7 @@ const Category = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:5000/itemCategory')
+        axios.get('https://used-products-resale-server-alpha.vercel.app/itemCategory')
             .then(data => setCategories(data.data))
     }, []);
 
@@ -23,12 +23,12 @@ const Category = () => {
     }
 
     return (
-        <div className='mb-20'>
-            <h2 className='text-2xl text-center mb-5'>Category</h2>
-            <div className='gap-10 px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+        <div className='mb-20 pt-9 px-5'>
+            <h2 className='text-2xl text-center mb-5 font-semibold'>Category</h2>
+            <div className='gap-10 px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                     categories?.map(category => <div key={category.id}>
-                        <div className="card h-52 hover:border border-teal-600  shadow shadow-slate-100">
+                        <div className="card h-40 hover:scale-x-95 duration-500  shadow shadow-slate-100">
                             <div className="card-body">
                                 <h2 className="card-title">{category?.name}</h2>
                                 <p>Click bellow Category button for different Item </p>

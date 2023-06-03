@@ -8,19 +8,19 @@ import Products from './Products';
 const MyProducts = () => {
 
   const { user } = useContext(AuthContext);
- 
+
 
   const { data: products, isLoading, refetch } = useQuery({
     queryKey: ['products'],
     queryFn: async () => {
       try {
-        const res = await fetch(`http://localhost:5000/itemName?email=${user?.email}`);
+        const res = await fetch(`https://used-products-resale-server-alpha.vercel.app/itemName?email=${user?.email}`);
         const data = await res.json();
         // console.log(data);
         return data;
       }
       catch (error) {
-        
+
       }
     }
   });
@@ -32,7 +32,7 @@ const MyProducts = () => {
 
 
   const handleDeleteProduct = id => {
-    fetch(`http://localhost:5000/itemName/${id}`, {
+    fetch(`https://used-products-resale-server-alpha.vercel.app/itemName/${id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())

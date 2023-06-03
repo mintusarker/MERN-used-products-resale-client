@@ -5,6 +5,10 @@ import Advertise from '../Advertise/Advertise';
 import ItemAdvertise from '../Advertise/ItemAdvertise';
 import Banner from '../Banner/Banner';
 import NewArrival from '../ExtraSection/NewArrival';
+import Contact from '../extra/Contact';
+import About from '../extra/About';
+import Review from '../extra/Review';
+import Services from '../extra/Services';
 
 const Home = () => {
     return (
@@ -13,6 +17,10 @@ const Home = () => {
            <ItemAdvertise></ItemAdvertise>
            <Category></Category>
            <NewArrival></NewArrival>
+           <Review></Review>
+           <Services></Services>
+           <About></About>
+           <Contact></Contact>
         </div>
     );
 };
