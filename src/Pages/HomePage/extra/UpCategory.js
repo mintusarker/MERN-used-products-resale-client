@@ -24,7 +24,7 @@ const UpCategory = () => {
 
     return (
         <div className='px-16 py-7'>
-            <div className='gap-8 lg:px-16 sm:px-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-9'>
+            <div className='gap-8 lg:px-16 sm:px-0 grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-9'>
                 {
                     categories?.map(category => <div key={category.id}>
                         <div className="hover:scale-x-95 duration-500 shadow shadow-slate-100">

@@ -25,14 +25,14 @@ const Category = () => {
     }
 
     return (
-        <div className='mb-20 pt-9 px-5'>
+        <div className='mb-20 pt-4 px-5'>
             <h2 className='text-2xl text-center mb-5 font-semibold'>Category</h2>
             <div className='gap-10 px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                     categories?.map(category => <div key={category.id}>
-                        <div className="card lg:h-40 md:h-40 sm:h-auto hover:scale-x-95 duration-500  shadow shadow-slate-100">
+                        <div className="card h-auto hover:scale-x-95 duration-500 shadow shadow-slate-100">
                             <div className="card-body">
-                                <h2 className="card-title">{category?.name}</h2>
+                                <h2 className="card-title -mt-3 ">{category?.name}</h2>
                                 <p>Click bellow Category button for different Item </p>
                                 <div className="card-actions justify-center">
                                     <Link to={`/itemName/${category.id}`}><button className="btn btn-primary">Category</button></Link>

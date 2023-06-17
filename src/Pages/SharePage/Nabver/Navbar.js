@@ -42,7 +42,7 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <img className='w-24 h-8' src={logo} alt="" /> <p className='text-blue-700 pl-2 text-2xl'>Market</p>
+                <img className='w-24 h-8' src={logo} alt="" /> <p className='text-slate-200 pl-2 text-2xl'>Market</p>
                 {/* <a href='/' className="btn btn-ghost  text-blue-700 normal-case text-2xl">Resell Market</a> */}
             </div>
             <div className="navbar-center hidden lg:flex">
