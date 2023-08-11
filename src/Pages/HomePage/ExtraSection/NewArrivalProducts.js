@@ -5,8 +5,8 @@ const NewArrivalProducts = ({ item }) => {
     return (
         <div>
             <div className="card card-compact bg-base-100 shadow-xl">
-                <figure><img className='h-60 w-72 rounded-xl hover:scale-105 duration-500' src={image} alt="" /></figure>
-                <div className="card-body">
+                <figure><img className='h-44 w-72 rounded hover:scale-105 duration-500' src={image} alt="" /></figure>
+                <div className="p-5">
                     <h2 className="card-title">Brand: {name}</h2>
                     <p>Version : {version}</p>
                     <p>Price : {price}</p>
