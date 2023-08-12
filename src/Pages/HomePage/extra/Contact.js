@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
+import './Contact.css'
 
 const Contact = () => {
 
@@ -9,7 +10,7 @@ const Contact = () => {
         e.target.reset()
     }
     return (
-        <div>
+        <div className='contact'> 
             <div className='px-16 text-center pt-12'>
                 <p className='pb-1 text-3xl font-semibold font-serif inline border-b-4 border-gray-500'>Contact Us</p>
                 <p className='pt-6'>Submit the form to get in touch with us</p>
@@ -19,12 +20,12 @@ const Contact = () => {
                 <div className='pl-32'>
                     <div className='py-8'>
                         <p className='text-3xl mb-6'>Have a question?</p>
-                        <span className='text-amber-800 text-lg'>Email me at mintosarker707@gmail.com</span>
-                        <p className='text-amber-800'>Phone / WhatsApp : +8801911697072</p>
+                        <span className='text-amber-700 text-lg'>Email me at mintosarker707@gmail.com</span>
+                        <p className='text-amber-700'>Phone / WhatsApp : +8801911697072</p>
                     </div>
                     <div>
                         <p className='text-lg'>Current Location</p>
-                        <span className='text-amber-800'>Rankin Street 223,Wari </span>
+                        <span className='text-amber-700'>Rankin Street 223, Wari </span>
                         {/* <p>We provide our service worldwide</p> */}
                     </div>
                 </div>
@@ -36,7 +37,7 @@ const Contact = () => {
 
                         <textarea name="message" rows="10" placeholder='Enter your message' className='p-2 h-28  border-2  border-black  rounded-md focus:outline-none' required></textarea>
 
-                        <button className='text-white bg-gradient-to-r from-green-600 to-gray-500 mt-6 px-6 py-3 mx-auto flex items-center rounded-md hover:scale-105 duration-300'>Let's talk</button>
+                        <button className='text-white bg-gradient-to-r from-green-600 to-gray-500 mt-6 px-5 py-2 mx-auto flex items-center rounded-sm hover:scale-105 duration-300'>Let's talk</button>
                     </form>
                 </div>
             </div>

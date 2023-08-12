@@ -16,14 +16,14 @@ const AllOrders = () => {
     const { data: allBookings = [], refetch } = useQuery({
         queryKey: ['allBookings'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allBookings`);
+            const res = await fetch(`https://used-products-resale-server-alpha.vercel.app/allBookings`);
             const data = await res.json();
             return data;
         }
     });
 
     const handleOrderRemove = id => {
-        fetch(`http://localhost:5000/bookings/${id}`, {
+        fetch(`https://used-products-resale-server-alpha.vercel.app/bookings/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -40,7 +40,7 @@ const AllOrders = () => {
 
     return (
         <div>
-            <h2 className='text-2xl my-5'>All Orders</h2>
+            <h2 className='text-2xl my-5'>All Orders: {allBookings?.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

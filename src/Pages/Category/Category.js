@@ -30,10 +30,10 @@ const Category = () => {
             <div className='gap-10 px-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5'>
                 {
                     categories?.map(category => <div key={category.id}>
-                        <div className="card h-auto hover:scale-x-95 duration-500 shadow shadow-slate-100">
-                            <div className="card-body">
+                        <div className=" p-4 rounded-md h-auto hover:scale-x-95 duration-500 shadow shadow-slate-100">
+                            <div className="">
                                 <h2 className="card-title -mt-3 ">{category?.name}</h2>
-                                <p>Click bellow Category button for different Item </p>
+                                <p className='text-sm py-1 text-start'>Click bellow Category button for different Item </p>
                                 <div className="card-actions justify-center">
                                     <Link to={`/itemName/${category.id}`}><button className="btn bg-emerald-700">Category</button></Link>
                                 </div>
