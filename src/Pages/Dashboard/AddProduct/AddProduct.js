@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
-import Loading from '../../Loading/Loading';
+
 
 const AddProduct = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -12,15 +12,6 @@ const AddProduct = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const { data: category, isLoading } = useQuery({
-        queryKey: ['itemName'],
-        queryFn: async () => {
-            const res = await fetch('https://used-products-resale-server-alpha.vercel.app/itemCategory');
-            const data = await res.json();
-            return data;
-        },
-
-    })
 
     const handleAddProduct = data => {
         const image = data.image[0];
@@ -39,10 +30,9 @@ const AddProduct = () => {
                     console.log(imgData.data.url);
                     const product = {
                         name: data.name,
-                        category_id: data.category,
+                        category_id: data.category.split('-')[0],
                         price: parseInt(data.price),
                         resell_price: parseInt(data.resell_price),
-                        // condition: data.condition,
                         phone: data.phone,
                         location: data.location,
                         detail: data.detail,
@@ -70,14 +60,10 @@ const AddProduct = () => {
                             reset();
                             navigate('/dashboard/myproduct');
                         })
-
                 }
             })
     };
 
-    // if (isLoading) {
-    //     return <Loading></Loading>
-    // }
 
 
     return (
@@ -123,15 +109,15 @@ const AddProduct = () => {
                         required: "Category_Id is required"
                     })} >
                         <option></option>
-                        <option selected>01</option>
-                        <option>02</option>
-                        <option>03</option>
-                        <option>04</option>
-                        <option>05</option>
-                        <option>06</option>
-                        <option>07</option>
-                        <option>08</option>
-                        <option>09</option>
+                        <option selected>01-Hp</option>
+                        <option>02-Asus</option>
+                        <option>03-Lenovo</option>
+                        <option>04-MSI</option>
+                        <option>05-Acer</option>
+                        <option>06-Apple</option>
+                        <option>07-Dell</option>
+                        <option>08-Microsoft</option>
+                        <option>09-Avita</option>
                     </select>
                 </div>
 
@@ -150,14 +136,6 @@ const AddProduct = () => {
                     })} />
                     {errors.resell_price && <p className='text-red-600'>{errors.resell_price.message}</p>}
                 </div>
-
-                {/* <div className="form-control w-full max-w-xs">
-                    <label className="label"><span className="label-text">Condition</span></label>
-                    <input type="text" className="input input-bordered w-full max-w-xs" {...register("condition", {
-                        required: "Condition is required"
-                    })} />
-                    {errors.condition && <p className='text-red-600'>{errors.condition.message}</p>}
-                </div> */}
 
                 <div className="form-control w-full max-w-xs">
                     <label className="label"><span className="label-text">Phone Number</span></label>

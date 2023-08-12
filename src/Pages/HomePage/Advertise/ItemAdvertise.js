@@ -32,11 +32,11 @@ const ItemAdvertise = () => {
     return (
         <div className='my-10 px-16'>
             <h2 className='text-2xl mb-10 text-blue-500 text-center'>Advertisement product</h2>
-            <div className='gap-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-7'>
+            <div className='gap-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 px-7'>
                 {
                     advertised.map(advertise => <div className=" rounded-none shadow-md shadow-slate-100">
-                        <figure><img className='h-40 w-full' src={advertise?.image} alt="Shoes" /></figure>
-                        <div className="p-4">
+                        <figure><img className='h-36 w-full' src={advertise?.image} alt="Shoes" /></figure>
+                        <div className="p-2">
                             <h2 className="card-title">{advertise?.name}</h2>
                             <p>Description: {advertise?.detail}</p>
                             <p>Price: {advertise?.price} Tk.</p>

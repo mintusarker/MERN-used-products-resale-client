@@ -41,7 +41,7 @@ const RunningOffer = () => {
         },
         {
             id: 8,
-            name: 'Acer Laptop',
+            name: 'Dell Laptop',
             Offer: '15 % off'
         },
         {

@@ -56,7 +56,7 @@ const BookingModal = ({ items, setItems }) => {
                         <input name='price' type="text" defaultValue={items?.resell_price} disabled className="input input-bordered w-full" />
                         <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input input-bordered w-full" />
                         <input name='email' type="email" defaultValue={user?.email} disabled placeholder="Email Address" className="input input-bordered w-full" />
-                        <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full" />
+                        <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full" required />
                         <input name='location' type="text" placeholder="location" className="input input-bordered w-full" />
                         <br />
                         <input type="submit" className='btn btn-accent w-full' value="Submit" />

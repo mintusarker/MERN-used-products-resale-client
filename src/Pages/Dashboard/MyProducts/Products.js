@@ -41,9 +41,9 @@ const Products = ({ product, handleDeleteProduct }) => {
     }
     return (
         <div>
-            <div className="card card-compact border p-5 bg-base-100 shadow-xl">
-                <figure><img className='h-40 w-60' src={image} alt="" /></figure>
-                <div className="card-body">
+            <div className="border bg-base-100 shadow-xl">
+                <figure><img className='h-40 w-full' src={image} alt="" /></figure>
+                <div className="p-5">
                     <h2 className="card-title">{name}</h2>
                     <p>Price: {price}</p>
                     <p>Description: {detail}</p>

@@ -1,7 +1,5 @@
 import React from 'react';
 import Category from '../../Category/Category';
-import MyProducts from '../../Dashboard/MyProducts/MyProducts';
-import Advertise from '../Advertise/Advertise';
 import ItemAdvertise from '../Advertise/ItemAdvertise';
 import Banner from '../Banner/Banner';
 import NewArrival from '../ExtraSection/NewArrival';
@@ -15,7 +13,7 @@ import UpCategory from '../extra/UpCategory';
 const Home = () => {
     return (
         <div>
-           <UpCategory></UpCategory>
+           {/* <UpCategory></UpCategory> */}
            <Banner></Banner>
            <ItemAdvertise></ItemAdvertise>
            <Category></Category>

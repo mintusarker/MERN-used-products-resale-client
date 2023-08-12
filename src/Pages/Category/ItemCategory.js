@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
-import Loading from '../Loading/Loading';
+
 
 
 const ItemCategory = ({ product, setItems }) => {
     const { user } = useContext(AuthContext)
-    const { resell_price, price, location, use, name, date, detail, _id, image, phone, seller } = product;
+    const { resell_price, price, location, use, name, date, detail, image, phone, seller } = product;
 
     return (
         <div>
@@ -26,14 +26,14 @@ const ItemCategory = ({ product, setItems }) => {
                         {user ? <label
                             htmlFor="booking-modal"
                             onClick={() => setItems(product)}
-                            className="btn btn-primary text-white">
+                            className="btn btn-secondary btn-sm rounded-sm text-white">
                             Book Now
-                        </label> : <Link to='/login'><button className="btn btn-secondary btn-sm rounded-sm mt-4 text-white">Book Now</button></Link>}
+                        </label> : <Link to='/login'><button className="btn btn-success btn-sm rounded-sm mt-4 text-white">Book Now</button></Link>}
 
                         {user ? <label
                             htmlFor="report-modal"
                             onClick={() => setItems(product)}
-                            className="btn btn-primary btn-sm mt-4 text-white">
+                            className="btn bg-slate-700 btn-xs rounded-sm mt-4 text-white">
                             Report
                         </label> : <Link to='/login'><button className="btn bg-slate-700 btn-xs rounded-sm  mt-4 text-white">Report</button></Link>}
                     </div>

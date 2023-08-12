@@ -1,42 +1,29 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider';
-import Loading from '../../Loading/Loading';
+import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import Loading from '../../Loading/Loading';
 
-const MyOrders = () => {
+const AllOrders = () => {
 
-    // const [bookings, setBookings] = useState([]);
+
     const { loading } = useContext(AuthContext)
 
     const { user } = useContext(AuthContext);
 
 
-    const { data: bookings = [], refetch } = useQuery({
-        queryKey: ['bookings'],
+    const { data: allBookings = [], refetch } = useQuery({
+        queryKey: ['allBookings'],
         queryFn: async () => {
-            const res = await fetch(`https://used-products-resale-server-alpha.vercel.app/bookings?email=${user?.email}`);
+            const res = await fetch(`http://localhost:5000/allBookings`);
             const data = await res.json();
             return data;
         }
     });
 
-
-
-    // useEffect(() => {
-    //     fetch(`https://used-products-resale-server-alpha.vercel.app/bookings?email=${user?.email}`, {
-    //         // headers: {
-    //         //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-    //         // }
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => setBookings(data))
-    // }, [user?.email])
-
-
-    const handleRemove = id => {
-        fetch(`https://used-products-resale-server-alpha.vercel.app/bookings/${id}`, {
+    const handleOrderRemove = id => {
+        fetch(`http://localhost:5000/bookings/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -53,7 +40,7 @@ const MyOrders = () => {
 
     return (
         <div>
-            <h2 className='text-2xl my-5'>My Orders</h2>
+            <h2 className='text-2xl my-5'>All Orders</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -62,35 +49,41 @@ const MyOrders = () => {
                             <th>Image</th>
                             <th>Title</th>
                             <th>Price</th>
+                            <th>Phone</th>
                             <th>Payment</th>
+                            <th>order</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {bookings?.length &&
-                            bookings?.map((booking, i) =>
+                        {allBookings?.length &&
+                            allBookings?.map((booking, i) =>
                                 <tr>
                                     <th>{i + 1}</th>
                                     <th>
                                         <div className="avatar">
-                                            <div className="w-20 rounded-xl">
+                                            <div className="w-16 rounded-sm">
                                                 <img src={booking?.image} alt="" />
                                             </div>
                                         </div>
                                     </th>
                                     <td>{booking?.itemName}</td>
                                     <td>Tk. {booking?.price}</td>
+                                    <td className='text-white'>{booking?.phone}</td>
                                     <td>
                                         {
                                             booking?.price && !booking.paid &&
-                                            <Link to={`/dashboard/payment/${booking?._id}`}><button className='btn btn-primary btn-sm'>Pay</button></Link>
+                                            <button className='btn btn-outline btn-xs'>Pending</button>
                                         }
                                         {
                                             booking?.price && booking?.paid && <span className='font-semibold text-green-500'>Paid</span>
                                         }
 
                                     </td>
-                                    <td>{!booking?.paid ? <button onClick={() => handleRemove(booking?._id)} className='btn btn-primary btn-sm'>Remove</button> : <p className='text-success'>Order confirmed</p>}</td>
+                                    <td>{!booking?.paid ? <button className='btn btn-outline btn-xs'>Pending</button> : <p className='text-success'>Ordered confirmed</p>}</td>
+                                    <td>
+                                        <button onClick={() => handleOrderRemove(booking?._id)} className='btn rounded-sm btn-primary btn-xs'>Remove</button>
+                                    </td>
                                 </tr>)
                         }
 
@@ -101,4 +94,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default AllOrders;
